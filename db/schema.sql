@@ -32,7 +32,7 @@ CREATE TABLE organizations (
 CREATE TABLE users (
     id INT NOT NULL AUTO_INCREMENT,
     username VARCHAR(20) NOT NULL,
-    password VARCHAR(12) NOT NULL,
+    password VARCHAR(20) NOT NULL,
     name VARCHAR(50),
     age INT(2) NOT NULL,
     male BOOLEAN,
