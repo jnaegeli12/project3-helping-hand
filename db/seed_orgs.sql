@@ -21,4 +21,16 @@ VALUES
     ('Seattle City Hall Shelter', '600 4th Ave', 'Seattle', 'WA', 98104, 2066842489, 'http://www.seattle.gov/', 0, 0, 1, 0, 0, 0, 0, 0, "description", 18, null, 1, 1, 1),
     ('Jefferson Day Center', '420 4th Ave', 'Seattle', 'WA', 98104, 2063385707, null, 0, 1, 0, 0, 0, 0, 0, 1, "description", 18, null, 1, 1, 0),
     ('Harborview Hall', '325 9th Ave', 'Seattle', 'WA', 98104, null, null, 0, 0, 0, 0, 1, 0, 1, 0, "description", null, null, 1, 1, 1),
-    ('Emergency Dental Care USA', '511 Olive Way', 'Seattle', 'WA', 98101, 2064523185, null, 0, 0, 0, 0, 1, 1, 0, 0, "description", null, null, 1, 1, 1);
+    ('Emergency Dental Care USA', '511 Olive Way', 'Seattle', 'WA', 98101, 2064523185, null, 0, 0, 0, 0, 1, 1, 0, 0, "description", null, null, 1, 1, 1),
+    ('North Help Line', '12736 33rd Ave NE', 'Seattle', 'WA', 98125, 2063673477, 'https://www.northhelpline.org/', 0, 1, 0, 0, 1, 0, 0, 0, "description", null, null, 1, 1, 1),
+    ('Ballard Food Bank', '5130 Leary Ave NW', 'Seattle', 'WA', 98103, 2067897800, 'https://www.ballardfoodbank.org/', 0, 1, 0, 0, 1, 0, 0, 0, "description" , null, null, 1, 1, 1),
+    ('University Food Bank', '5017 Roosevelt Way NE', 'Seattle', 'WA', 98105, 2065237060, 'https://www.udistrictfoodbank.org/', 0, 1, 0, 0, 0, 0, 0, "description", null, null, 1, 1, 1),
+    ('Cherry Street Food Bank/NorthWest Harvest', '11 Cherry St', 'Seattle', 'WA', 98104, 2066250755, 'https://www.northwestharvest.org/', 0, 1, 0, 0, 0, 0, 0, 0, "description", null, null, 1, 1, 1),
+    ('West Seattle Food Bank', '3419 SW Morgan St', 'Seattle', 'WA', 98126, 2069329023, 'https://westseattlefoodbank.org/', 0, 1, 0, 0, 0, 0, 0, 0,"description", null, null, 1, 1, 1),
+    ('Hopelink Bellevue', '14812 Main St', 'Bellevue', 'WA', 98007, 4259437555, 'https://www.hopelink.org/', 0, 1, 0, 1, 0, 0, 0, 0, "description", null, null, 1, 1, 1),
+    ('Hopelink Kirkland', '302 First St', 'Kirkland', 'WA', 98003, 4258897880, 'https://www.hopelink.org/', 0, 1, 0, 1, 0, 0, 0, 0, "description", null, null, 1, 1, 1),
+    ('Kent Food Bank and Emergency Services', '525 W Harrison St', 'Kent', 'WA', 98032, 2535203550, 'https://kentfoodbank.org/', 0, 1, 0, 0, 0, 0, 0, 0, "description", null, null, 1, 1, 1),
+    ('Saint Lukes Episcopal Church', '5710 22nd Ave', 'Seattle', 'WA', 98107, 2067843119, 'https://www.stlukesseattle.org/', 1, 1, 0, 0, 0, 0, 0, 0, "description", null, null, 1, 1, 1),
+    ('El Centro de La Raza', '2524 16th Ave S', 'Seattle', 'WA', 98144, null, 'https://www.elcentrodelaraza.org/get-help/', 0, 1, 0, 0, 0, 0, 0, 0, "description", null, null, 1, 1, 1),
+    ('Youth Cares Orion Center', '1828 Yale Ave', 'Seattle', 'WA', 98101, 20066225555, 'https://youthcare.org/get-help/', 1, 0, 1, 0, 0, 0, 0, 0, "description", 12, 24, 1, 1, 0),
+    ('Teen Feed', '4525 16th Ave NE', 'Seattle', 'WA', , 2065224366, 'http://www.teenfeed.org/', 1, 0, 0, 0, 1, 0, 0, 0, "description", null, null, 0, 0, 1);
