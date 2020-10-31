@@ -11,13 +11,13 @@ module.exports = {
             cb(res)                    
         })
     },
-    selectAllHealth_care: function(cb) {
-        orm.selectAllHealth_care('organization', function (res) {
+    selectAllHealth: function(cb) {
+        orm.selectAllHealth('organization', function (res) {
             cb(res)
         })
     },
-    selectAllDaily_care: function(cb) {
-        orm.selectAllDaily_care('organization', function (res) {
+    selectAllDaily: function(cb) {
+        orm.selectAllDaily('organization', function (res) {
             cb(res)
         })
     },

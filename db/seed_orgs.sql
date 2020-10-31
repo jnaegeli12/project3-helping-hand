@@ -1,4 +1,4 @@
-INSERT INTO organization 
+INSERT INTO organizations 
     (name, address, city, state, zip, phone_number, website, served_meal, food_bank, immediate_shelter, longterm_shelter, urgent_care, dental, mental, daily, description, age_min, age_max, male, female, family_youth)
 VALUES
     ('Millionair Club Charity', '2515 Western Ave', 'Seattle', 'WA', 98121, 2069222015, 'https://www.oslserves.org/', 1, 0, 0, 0, 0, 1, 0, 1, "description", 18, 65, 1, 1, 1),
