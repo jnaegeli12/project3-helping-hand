@@ -1,41 +1,37 @@
 const router = require('express').Router();
-
-const help = require('../models');
-
-// html routes
-router.get("/results", function(req, res) {
-    res.render('results');
-});
-
-router.get("/submit", function(req, res) {
-    res.render('submit');
-});
+const db = require('../db');
 
 //api routes
+router.get('api/all', function(req, res) {
+    db.findAll(function(data) {
+        res.json(data);
+        console.log(data);
+    })
+})
+
 router.get('/api/food', function(req, res) {
-    
-    help.selectAllFood(function(data) {
+    db.selectAllFood(function(data) {
         res.json(data)
         console.log(data);
     });
 });
 
 router.get('/api/shelter', function(req, res) {
-    help.selectAllShelter(function(data) {
+    db.selectAllShelter(function(data) {
         res.json(data)
         console.log(data);
     });
 });
 
 router.get('/api/health_care', function(req, res) {
-    help.selectAllHealth(function(data) {
+    db.selectAllHealth(function(data) {
         res.json(data)
         console.log(data);
     });
 });
 
 router.get('/api/daily_care', function(req, res) {
-    help.selectAllDaily(function(data) {
+    db.selectAllDaily(function(data) {
         res.json(data)
         console.log(data);
 
@@ -43,7 +39,7 @@ router.get('/api/daily_care', function(req, res) {
 });
 
 router.post('api/organization', function(req, res) {
-    help.create([
+    db.createOrg([
         'name',
         'address',
         'city',
