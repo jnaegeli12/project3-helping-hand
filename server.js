@@ -1,5 +1,7 @@
 const express = require("express");
 const app = express();
+
+// Import routes and give the server access to them.
 const routes = require("./routes");
 
 const PORT = process.env.PORT || 3001;
@@ -14,9 +16,6 @@ if (process.env.NODE_ENV === "production") {
 }
 // Add routes, both API and view
 app.use(routes);
-
-// Import routes and give the server access to them.
-var routes = require("./controllers/handcontroller.js");
 
 // Start the API server
 app.listen(PORT, function() {
