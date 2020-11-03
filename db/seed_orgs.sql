@@ -33,4 +33,4 @@ VALUES
     ('Saint Lukes Episcopal Church', '5710 22nd Ave', 'Seattle', 'WA', 98107, 2067843119, 'https://www.stlukesseattle.org/', 1, 1, 0, 0, 0, 0, 0, 0, "description", null, null, 1, 1, 1),
     ('El Centro de La Raza', '2524 16th Ave S', 'Seattle', 'WA', 98144, null, 'https://www.elcentrodelaraza.org/get-help/', 0, 1, 0, 0, 0, 0, 0, 0, "description", null, null, 1, 1, 1),
     ('Youth Cares Orion Center', '1828 Yale Ave', 'Seattle', 'WA', 98101, 20066225555, 'https://youthcare.org/get-help/', 1, 0, 1, 0, 0, 0, 0, 0, "description", 12, 24, 1, 1, 0),
-    ('Teen Feed', '4525 16th Ave NE', 'Seattle', 'WA', , 2065224366, 'http://www.teenfeed.org/', 1, 0, 0, 0, 1, 0, 0, 0, "description", null, null, 0, 0, 1);
+    ('Teen Feed', '4525 16th Ave NE', 'Seattle', 'WA', 98105 , 2065224366, 'http://www.teenfeed.org/', 1, 0, 0, 0, 1, 0, 0, 0, "description", null, null, 0, 0, 1);
