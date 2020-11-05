@@ -1,4 +1,4 @@
-INSERT INTO organization 
+INSERT INTO organizations 
     (name, address, city, state, zip, phone_number, website, served_meal, food_bank, immediate_shelter, longterm_shelter, urgent_care, dental, mental, daily, description, age_min, age_max, male, female, family_youth)
 VALUES
     ('Millionair Club Charity', '2515 Western Ave', 'Seattle', 'WA', 98121, 2069222015, 'https://www.oslserves.org/', 1, 0, 0, 0, 0, 1, 0, 1, "description", 18, 65, 1, 1, 1),
@@ -33,4 +33,4 @@ VALUES
     ('Saint Lukes Episcopal Church', '5710 22nd Ave', 'Seattle', 'WA', 98107, 2067843119, 'https://www.stlukesseattle.org/', 1, 1, 0, 0, 0, 0, 0, 0, "description", null, null, 1, 1, 1),
     ('El Centro de La Raza', '2524 16th Ave S', 'Seattle', 'WA', 98144, null, 'https://www.elcentrodelaraza.org/get-help/', 0, 1, 0, 0, 0, 0, 0, 0, "description", null, null, 1, 1, 1),
     ('Youth Cares Orion Center', '1828 Yale Ave', 'Seattle', 'WA', 98101, 20066225555, 'https://youthcare.org/get-help/', 1, 0, 1, 0, 0, 0, 0, 0, "description", 12, 24, 1, 1, 0),
-    ('Teen Feed', '4525 16th Ave NE', 'Seattle', 'WA', , 2065224366, 'http://www.teenfeed.org/', 1, 0, 0, 0, 1, 0, 0, 0, "description", null, null, 0, 0, 1);
+    ('Teen Feed', '4525 16th Ave NE', 'Seattle', 'WA', 98105 , 2065224366, 'http://www.teenfeed.org/', 1, 0, 0, 0, 1, 0, 0, 0, "description", null, null, 0, 0, 1);

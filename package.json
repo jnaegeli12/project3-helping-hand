@@ -1,0 +1,20 @@
+{
+  "name": "project3-helping-hand",
+  "version": "1.0.0",
+  "description": "update of project 2",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jnaegeli12/project3-helping-hand.git"
+  },
+  "author": "Judy Naegeli and team",
+  "license": "Unlicense",
+  "bugs": {
+    "url": "https://github.com/jnaegeli12/project3-helping-hand/issues"
+  },
+  "homepage": "https://github.com/jnaegeli12/project3-helping-hand#readme"
+}
