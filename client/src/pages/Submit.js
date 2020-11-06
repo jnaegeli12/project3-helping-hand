@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react'
 import Container from '../components/Container';
-import Nav from '../components/Nav'
 import '../components/css/style.css'
 
 
@@ -10,7 +9,6 @@ const Submit = () => {
         
 
 <div>
-<Nav />
 <section>
     <div className="container-fluid">
         <h1>Add an Organization</h1>
