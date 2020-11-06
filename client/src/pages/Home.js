@@ -1,40 +1,33 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react';
 import Container from '../components/Container';
 import FBtn from '../components/FBtn';
 import DcBtn from '../components/DcBtn';
 import HBtn from '../components/HBtn';
 import SBtn from '../components/SBtn'
-import Nav from '../components/Nav'
-import ResultCar from '../components/ResultsCard'
-import Submit from '../pages/Submit'
+import ResultCard from '../components/ResultsCard'
 
 
-
-
-const Home = () => {
+export default function Home() {
     return(
-<div>
- 
-    <Nav />
-    <FBtn>
-        <ResultCar /> 
-    </FBtn>
-    <DcBtn>
-        <ResultCar /> 
-    </DcBtn>   
-    <HBtn>
-        <ResultCar /> 
-    </HBtn>    
-    <SBtn>
-        <ResultCar /> 
-    </SBtn>   
-    <Submit />
-
- 
-</div>
-
+        
+         <Container>
+            <div className="row col-9">
+                <FBtn>
+                    <ResultCard />                                                                    
+                </FBtn>
+                <DcBtn>
+                    <ResultCard /> 
+                </DcBtn>
+            </div>
+            <div className="row col-9">
+                <HBtn>
+                    <ResultCard /> 
+                </HBtn>    
+                <SBtn>
+                    <ResultCard /> 
+                </SBtn>
+            </div> 
+               
+        </Container>
     )
 };
-
-
-export default Home ;
