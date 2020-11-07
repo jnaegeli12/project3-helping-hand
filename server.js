@@ -3,8 +3,7 @@ const express = require("express");
 const router = express.Router();
 const app = express();
 const PORT = process.env.PORT || 3001;
-const dbModel = require("./db");
-const controller = require("./controller/controller");
+const orm = require("./db");
 
 // Define middleware here
 router.use(express.urlencoded({ extended: true }));
@@ -15,24 +14,40 @@ if (process.env.NODE_ENV === "production") {
 }
 // Add routes, both API and view
 app.get("/api/all", (req, res) => {
-  res.json('all results')
+  orm.selectAll(function(result) {
+    res.json(result);
+  })
 });
 
 app.get("/api/food", (req, res) => {
-  res.json('food works')
+  orm.selectAllFood(function(result) {
+    res.json(result);
+  })
 });
 
 app.get("/api/shelter", (req, res) => {
-  res.json('shelter works');
+  orm.selectAllShelter(function(result) {
+    res.json(result);
+  })
 });
 
-app.get("api/healthcare", (req, res) => {
-  res.json('health works');
+app.get("/api/health", (req, res) => {
+  orm.selectAllHealth(function(result) {
+    res.json(result);
+  })
 });
 
-app.get("api/dailycare", (req, res) => {
-  res.json('daily works');
+app.get("/api/daily", (req, res) => {
+  orm.selectAllDaily(function(result) {
+    res.json(result);
+  })
 });
+
+app.post("/api/all", (req , res) => {
+  orm.createOrg(function(result) {
+    res.json(result);
+  })
+})
 
 // Start the API server
 app.listen(PORT, function() {
