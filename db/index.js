@@ -26,7 +26,7 @@ function printQuestionMarks(num) {
 //     return arr.toString();
 // }
 
-class DB {
+class Results {
     constructor(connection) {
         this.connection = connection;
     }
@@ -89,4 +89,4 @@ class DB {
     }
 };
 
-module.exports = new DB(connection);
+module.exports = new Results(connection);
