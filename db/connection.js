@@ -3,9 +3,9 @@ const util = require("util");
 
 const connection = mysql.createConnection({
   host: "localhost",
-  port: process.env.JAWSDB_URL || 3001,
+  port: process.env.JAWSDB_URL || 3306,
   user: "root",
-  password: "employees",
+  password: "employee",
   database: "services_db"
 });
 

@@ -1,9 +1,9 @@
+
 const express = require("express");
 const router = express.Router();
-const routes = require("./routes");
 const app = express();
-const PORT = process.env.PORT || 3306;
-const dbModel = require("./db");
+const PORT = process.env.PORT || 3301;
+const orm = require("./db");
 
 // Define middleware here
 router.use(express.urlencoded({ extended: true }));
@@ -13,10 +13,41 @@ if (process.env.NODE_ENV === "production") {
   router.use(express.static("client/build"));
 }
 // Add routes, both API and view
-app.get("/api/shelter", (req, res) => {
-  res.json(dbModel.selectAllShelter)
-})
+app.get("/api/all", (req, res) => {
+  orm.selectAll(function(result) {
+    res.json(result);
+  })
+});
 
+app.get("/api/food", (req, res) => {
+  orm.selectAllFood(function(result) {
+    res.json(result);
+  })
+});
+
+app.get("/api/shelter", (req, res) => {
+  orm.selectAllShelter(function(result) {
+    res.json(result);
+  })
+});
+
+app.get("/api/health", (req, res) => {
+  orm.selectAllHealth(function(result) {
+    res.json(result);
+  })
+});
+
+app.get("/api/daily", (req, res) => {
+  orm.selectAllDaily(function(result) {
+    res.json(result);
+  })
+});
+
+app.post("/api/all", (req , res) => {
+  orm.createOrg(function(result) {
+    res.json(result);
+  })
+})
 
 // Start the API server
 app.listen(PORT, function() {
