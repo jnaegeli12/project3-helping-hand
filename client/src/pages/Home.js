@@ -26,6 +26,7 @@ export default function Home() {
                 <SBtn>
                     <ResultCard /> 
                 </SBtn>
+                <ResultCard />
             </div> 
                
         </Container>
