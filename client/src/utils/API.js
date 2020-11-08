@@ -15,11 +15,11 @@ const API =  {
   },
   // Gets all healthcare organizations
   getHealth: function() {
-    return axios.get("/api/healthcare");
+    return axios.get("/api/health");
   },
   // Gets all daily care organizations
   getDaily: function() {
-    return axios.get("/api/dailycare");
+    return axios.get("/api/daily");
   },
   // Posts a new org
   addOrg: function() {
