@@ -1,6 +1,7 @@
 body {
     font-family: 'Be Vietnam', sans-serif;
     background-color: #8dd7cf;
+    color: #425260;
 }
 
 .navbar {
@@ -67,8 +68,25 @@ label {
     background-color: #425260;
 }
 
+.bg-dark {
+    background-color: #425260 !important;
+}
+
+.row {
+    display: flex;
+    text-align: center;
+    justify-content: center;
+}
+
+.link {
+    color: #425260 !important;
+}
+
 h1 {
+    font-family: 'Be Vietnam', sans-serif;
     font-weight: bold;
+    text-align: center;
     font-size: 48px;
     color: #425260;
+    padding-bottom: 30px;
 }

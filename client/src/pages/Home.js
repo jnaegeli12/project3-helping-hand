@@ -1,34 +1,28 @@
 import React, { useState, useEffect } from 'react';
-import Container from '../components/Container';
-import FBtn from '../components/FBtn';
-import DcBtn from '../components/DcBtn';
-import HBtn from '../components/HBtn';
-import SBtn from '../components/SBtn'
-import ResultCard from '../components/ResultsCard'
+import Header from '../components/Header';
+import ShelterCard from '../components/ShelterCard'
+import Content from '../components/Content';
+import ButtonContext from '../utils/ButtonContext';
+import TypeContext from '../utils/TypeContext';
 
 
 export default function Home() {
+    const [alert, setAlert] = useState({
+        display: false,
+        type: "all",
+        onClick: (type, display) => setAlert({...alert, type, display})
+    });
+    
     return(
-        
-         <Container>
-            <div className="row col-9">
-                <FBtn>
-                    <ResultCard />                                                                    
-                </FBtn>
-                <DcBtn>
-                    <ResultCard /> 
-                </DcBtn>
-            </div>
-            <div className="row col-9">
-                <HBtn>
-                    <ResultCard /> 
-                </HBtn>    
-                <SBtn>
-                    <ResultCard /> 
-                </SBtn>
-                <ResultCard />
-            </div> 
-               
-        </Container>
+        <ButtonContext.Provider value={alert}>
+            <TypeContext.Provider value={"all"}>
+
+                <div className="container container-fluid">
+                    <Header />
+                    <Content />
+                </div>
+                
+            </TypeContext.Provider>
+        </ButtonContext.Provider>
     )
 };

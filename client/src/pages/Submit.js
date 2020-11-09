@@ -1,8 +1,4 @@
 import React, { useState, useEffect } from 'react'
-import Container from '../components/Container';
-import '../components/css/style.css'
-
-
 
 const Submit = () => {
     return(
