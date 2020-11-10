@@ -19,6 +19,7 @@
   "homepage": "https://github.com/jnaegeli12/project3-helping-hand#readme",
   "dependencies": {
     "bootstrap": "^4.5.3",
-    "react-router-dom": "^5.2.0"
+    "react-router-dom": "^5.2.0",
+    "sequelize-heroku": "^2.1.6"
   }
 }
