@@ -13,18 +13,10 @@ export default function App() {
       <div>
         <Nav />
         <Switch>
-          <Route exact path={["/", "/home"]}>
-            <Home />
-          </Route>
-          <Route exact path="/submit">
-            <Submit />
-          </Route>
-          <Route exact path="/profile">
-            <Profile />
-          </Route>
-          <Route exact path="/results">
-            <Results />
-          </Route>
+          <Route exact path="/" component={Home} />
+          <Route exact path="/submit" component={Submit} />
+          <Route exact path="/profile" component={Profile} />
+          <Route exact path="/results" component={Results} />
         </Switch>
       </div>
     </Router>

@@ -1,4 +1,5 @@
 const connection = require("./connection.js");
+const mysql = require("mysql");
 
 function printQuestionMarks(num) {
     var arr = [];
