@@ -29,7 +29,8 @@
     "if-env": "^1.0.4",
     "mysql": "2.18.1",
     "react-router-dom": "^5.2.0",
-    "sequelize-heroku": "^2.1.6"
+    "sequelize-heroku": "^2.1.6",
+    "util": "^0.12.3"
   },
   "devDependencies": {
     "concurrently": "^4.1.2",
