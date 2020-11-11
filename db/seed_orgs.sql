@@ -24,7 +24,7 @@ VALUES
     ('Emergency Dental Care USA', '511 Olive Way', 'Seattle', 'WA', 98101, 2064523185, null, 0, 0, 0, 0, 1, 1, 0, 0, "description", null, null, 1, 1, 1),
     ('North Help Line', '12736 33rd Ave NE', 'Seattle', 'WA', 98125, 2063673477, 'https://www.northhelpline.org/', 0, 1, 0, 0, 1, 0, 0, 0, "description", null, null, 1, 1, 1),
     ('Ballard Food Bank', '5130 Leary Ave NW', 'Seattle', 'WA', 98103, 2067897800, 'https://www.ballardfoodbank.org/', 0, 1, 0, 0, 1, 0, 0, 0, "description" , null, null, 1, 1, 1),
-    ('University Food Bank', '5017 Roosevelt Way NE', 'Seattle', 'WA', 98105, 2065237060, 'https://www.udistrictfoodbank.org/', 0, 1, 0, 0, 0, 0, 0, "description", null, null, 1, 1, 1),
+    ('University Food Bank', '5017 Roosevelt Way NE', 'Seattle', 'WA', 98105, 2065237060, 'https://www.udistrictfoodbank.org/', 0, 1, 0, 0, 0, 0, 0, 0, "description", null, null, 1, 1, 1),
     ('Cherry Street Food Bank/NorthWest Harvest', '11 Cherry St', 'Seattle', 'WA', 98104, 2066250755, 'https://www.northwestharvest.org/', 0, 1, 0, 0, 0, 0, 0, 0, "description", null, null, 1, 1, 1),
     ('West Seattle Food Bank', '3419 SW Morgan St', 'Seattle', 'WA', 98126, 2069329023, 'https://westseattlefoodbank.org/', 0, 1, 0, 0, 0, 0, 0, 0,"description", null, null, 1, 1, 1),
     ('Hopelink Bellevue', '14812 Main St', 'Bellevue', 'WA', 98007, 4259437555, 'https://www.hopelink.org/', 0, 1, 0, 1, 0, 0, 0, 0, "description", null, null, 1, 1, 1),
