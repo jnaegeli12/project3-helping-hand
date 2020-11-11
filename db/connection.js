@@ -1,17 +1,17 @@
-const mysql = require("mysql");
-const util = require("util");
-let connection;
+var mysql = require("mysql");
+var util = require("util");
+var connection;
 
 if (process.env.JAWSDB_URL) {
-  connection = mysql.createConnection(process.env.JAWSDB_URL)
+  connection = mysql.createConnection(process.env.JAWSDB_URL);
 } else {
   connection = mysql.createConnection({
     host: 'localhost',
     user: 'root',
     password: 'employees',
     database: 'services_db'
-  })
-}
+  });
+};
 
 connection.connect(function(err) {
   if (err) {
