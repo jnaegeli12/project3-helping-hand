@@ -202,7 +202,7 @@ export default class Submit extends React.Component {
                     {/* Health Services */}
                     <div className="form-group">
                         <label 
-                            for="health">Health & Personal Care</label>
+                            for="health">Health &amp; Personal Care</label>
                         <div className="d-flex justify-content-around health">
                                 <div className="form-check form-check-inline">
                                     <input 

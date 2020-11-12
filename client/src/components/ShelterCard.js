@@ -22,6 +22,7 @@ const [shelter, setShelter] = useState([]);
      <h3>{shelters.name}</h3>
      <h5>{shelters.address}, {shelters.city} {shelters.state}</h5>
      <h3>Phone: {shelters.phone_number}</h3>
+     <p>{shelters.description}</p>
      <a className="text-white" href={shelters.website}>{shelters.website}</a>
     </div>
   </div>
