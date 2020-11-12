@@ -22,6 +22,7 @@ const [food, setFood] = useState([]);
      <h3>{foods.name}</h3>
      <h5>{foods.address}, {foods.city} {foods.state}</h5>
      <h3>Phone: {foods.phone_number}</h3>
+     <p>{foods.description}</p>
      <a className="text-white" href={foods.website}>{foods.website}</a>
     </div>
   </div>

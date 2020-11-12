@@ -22,6 +22,7 @@ const [daily, setDaily] = useState([]);
      <h3>{dailyOrgs.name}</h3>
      <h5>{dailyOrgs.address}, {dailyOrgs.city} {dailyOrgs.state}</h5>
      <h3>Phone: {dailyOrgs.phone_number}</h3>
+     <p>{dailyOrgs.description}</p>
      <a className="text-white" href={dailyOrgs.website}>{dailyOrgs.website}</a>
     </div>
   </div>

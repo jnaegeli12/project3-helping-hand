@@ -22,6 +22,7 @@ const [health, setHealth] = useState([]);
      <h3>{healthOrgs.name}</h3>
      <h5>{healthOrgs.address}, {healthOrgs.city} {healthOrgs.state}</h5>
      <h3>Phone: {healthOrgs.phone_number}</h3>
+     <p>{healthOrgs.description}</p>
      <a className="text-white" href={healthOrgs.website}>{healthOrgs.website}</a>
     </div>
   </div>
