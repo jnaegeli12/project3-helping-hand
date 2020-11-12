@@ -1,9 +1,10 @@
 import React from 'react';
 
-function Header() {
+function Header(props) {
+
     return(
         <div className="row">
-            <h1>What do you need?</h1>
+            <h1>{ props.headerName }</h1>
         </div>
     );
 }
