@@ -1,242 +1,381 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react';
+import Header from '../components/Header';
 
-const Submit = () => {
-    return(
-        
+export default class Submit extends React.Component {
+    state = {
+        name: "",
+        address: "",
+        city: "",
+        state: "WA",
+        zip: null,
+        phone_number: null,
+        website: "",
+        served_meal: false,
+        food_bank: false,
+        immediate_shelter: false,
+        longterm_shelter: false,
+        urgent_care: false,
+        dental: false,
+        mental: false,
+        daily: false,
+        description: "",
+        age_min: null,
+        age_max: null,
+        male: false,
+        female: false,
+        family_youth: false
+    }
+    
+    handleChange = event => {
+        const isCheckBox = event.target.type === 'checkbox';
+        console.log(event.target.value);
+        this.setState({ 
+            [event.target.name]: isCheckBox 
+            ? event.target.checked 
+            : event.target.value 
+         });
+    }
 
-<div>
-<section>
-    <div className="container-fluid">
-        <h1>Add an Organization</h1>
-    </div>
-</section>
-<form>
-    <div className="container">
-        {/* <!-- Organization Name --> */}
-        <div className="form-group">
-            <label for="org_name">Organization Name</label>
-            <input type="name" className="form-control" id="org_name" aria-describedby="org name"
-                placeholder="Organization's Full Name"></input>
-        </div>
-        <div className="row">
-            {/* <!-- Phone Number --> */}
-            <div className="form-group col-md-6">
-                <label for="phone">Phone Number</label>
-                <input type="phone" className="form-control" id="phone" aria-describedby="phone number"
-                    placeholder="123.456.7890"></input>
-            </div>
-            {/* <!-- Website --> */}
-            <div className="form-group col-md-6">
-                <label for="website">Website</label>
-                <input type="website" className="form-control" id="website" aria-describedby="website"
-                    placeholder="Website.org"></input>
-            </div>
-        </div>
-        {/* <!-- Address --> */}
-        <div className="form-group ">
-            <label for="inputAddress">Address</label>
-            <input type="text" className="form-control" id="inputAddress" placeholder="1234 Main St"></input>
-        </div>
-        <div className="form-group">
-            <label for="inputAddress2">Address 2</label>
-            <input type="text" className="form-control" id="inputAddress2" placeholder="Building, suite, or floor"></input>
-        </div>
-        <div className="form-row">
-            <div className="form-group col-md-6">
-                <label for="inputCity">City</label>
-                <input type="text" className="form-control" id="inputCity"></input>
-            </div>
-            <div className="form-group col-md-4">
-                <label for="inputState">State</label>
-                <select id="inputState" className="form-control">
-                    <option selected>WA</option>
-                </select>
-            </div>
-            <div className="form-group col-md-2">
-                <label for="inputZip">Zip</label>
-                <input type="text" className="form-control" id="inputZip"></input>
-            </div>
-        </div>
-        <br></br>
-        {/* <!-- Hours and days of operation --> */}
-        <div className="form-group col-md-12" id="operationInfo">
-            <label for="operatingInfo">Please enter the organization's days and hours of operation</label>
-            {/* <!-- Row of dropdowns for choosing open and closing hours --> */}
-            <div className="row">
-                <div className="form-group col-md-3">
-                    <label for="openingTime">Opening Hours</label>
-                    <select id="openingHour" className="form-control">
-                        <option selected>Choose...</option>
-                        <option>12:00 AM</option>
-                        <option>1:00 AM</option>
-                        <option>2:00 AM</option>
-                        <option>3:00 AM</option>
-                        <option>4:00 AM</option>
-                        <option>5:00 AM</option>
-                        <option>6:00 AM</option>
-                        <option>7:00 AM</option>
-                        <option>8:00 AM</option>
-                        <option>9:00 AM</option>
-                        <option>10:00 AM</option>
-                        <option>11:00 AM</option>
-                        <option>12:00 PM</option>
-                        <option>1:00 PM</option>
-                        <option>2:00 PM</option>
-                        <option>3:00 PM</option>
-                        <option>4:00 PM</option>
-                        <option>5:00 PM</option>
-                        <option>6:00 PM</option>
-                        <option>7:00 PM</option>
-                        <option>8:00 PM</option>
-                        <option>9:00 PM</option>
-                        <option>10:00 PM</option>
-                        <option>11:00 PM</option>
-                    </select>
-                </div>
-                <div className="form-group col-md-3">
-                    <label for="closingTime">Closing Hours</label>
-                    <select id="closingHour" className="form-control">
-                        <option selected>Choose...</option>
-                        <option>12:00 AM</option>
-                        <option>1:00 AM</option>
-                        <option>2:00 AM</option>
-                        <option>3:00 AM</option>
-                        <option>4:00 AM</option>
-                        <option>5:00 AM</option>
-                        <option>6:00 AM</option>
-                        <option>7:00 AM</option>
-                        <option>8:00 AM</option>
-                        <option>9:00 AM</option>
-                        <option>10:00 AM</option>
-                        <option>11:00 AM</option>
-                        <option>12:00 PM</option>
-                        <option>1:00 PM</option>
-                        <option>2:00 PM</option>
-                        <option>3:00 PM</option>
-                        <option>4:00 PM</option>
-                        <option>5:00 PM</option>
-                        <option>6:00 PM</option>
-                        <option>7:00 PM</option>
-                        <option>8:00 PM</option>
-                        <option>9:00 PM</option>
-                        <option>10:00 PM</option>
-                        <option>11:00 PM</option>
-                    </select>
-                </div>
-            </div>
-            {/* <!-- Inline checkboxes for choosing days open --> */}
-            <div className="form-check form-check-inline">
-                <input className="form-check-input" type="checkbox" id="sunday" value="true"></input>
-                <label className="form-check-label" for="sundayCheck">Sunday</label>
-            </div>
-            <div className="form-check form-check-inline">
-                <input className="form-check-input" type="checkbox" id="monday" value="true"></input>
-                <label className="form-check-label" for="mondayCheck">Monday</label>
-            </div>
-            <div className="form-check form-check-inline">
-                <input className="form-check-input" type="checkbox" id="tuesday" value="true"></input>
-                <label className="form-check-label" for="tuesdayCheck">Tuesday</label>
-            </div>
-            <div className="form-check form-check-inline">
-                <input className="form-check-input" type="checkbox" id="wednesday" value="true"></input>
-                <label className="form-check-label" for="wednesdayCheck">Wednesday</label>
-            </div>
-            <div className="form-check form-check-inline">
-                <input className="form-check-input" type="checkbox" id="thursday" value="true"></input>
-                <label className="form-check-label" for="thursdayCheck">Thursday</label>
-            </div>
-            <div className="form-check form-check-inline">
-                <input className="form-check-input" type="checkbox" id="friday" value="true"></input>
-                <label className="form-check-label" for="fridayCheck">Friday</label>
-            </div>
-            <div className="form-check form-check-inline">
-                <input className="form-check-input" type="checkbox" id="saturday" value="true"></input>
-                <label className="form-check-label" for="saturdayCheck">Saturday</label>
-            </div>
-        </div>
-        <br></br>
-        {/* <!-- Serving Population Details --> */}
-        <label for="inlineFormInput">Min/Max Age Served</label>
-        <div className="row">
-            <div className="col-auto">
-                <input type="number" className="form-control form-control-lg mb-2" id="age_min" placeholder="18"></input>
-            </div>
-            <div className="col-auto">
-                <input type="number" className="form-control form-control-lg mb-2" id="age_max" placeholder="55"></input>
-            </div>
-        </div>
+    handleSubmit = (event)  => {
+        event.preventDefault();
+        console.log(this.state)
+    }
 
-        {/* <!-- Dropdown for choosing service --> */}
-        <div className="form-group col-md-6">
-            <label for="org_type">Please select the organization's primary service</label>
-            <select className="form-control" id="org_type">
-                <option selected>Choose...</option>
-                <option value="health">Health</option>
-                <option value="dailyCare">Daily Care</option>
-                <option value="food">Food</option>
-                <option value="shelter">Shelter</option>
-            </select>
-            <div className="form-group service" id="health">
-                <p>health</p>
-            </div>
-            <div className="form-group service" id="dailyCare">
-                <p>daily care</p>
-            </div>
-            <br></br>
-            {/* <!-- Questions for Food --> */}
-            <div className="form-group service" id="food">
-                <label for="foodServiceType">Please specify how you provide food.</label>
-                <select className="form-control col-md-6" id="foodServiceType">
-                    <option value="default">Choose...</option>
-                    <option value="foodBank">Food Bank</option>
-                    <option value="servedMeals">Served Meals</option>
-                </select>
-                <br></br>
-                <label className="mealCheck" for="mealCheck">Please specify the kinds of meals served.</label>
-                <br></br>
-                <div className="mealCheck">
-                    <div className="form-check form-check-inline">
-                        <input className="form-check-input" type="checkbox" id="breakfast" value="true"></input>
-                        <label className="form-check-label" for="breakfastCheck">Breakfast</label>
+    render() {
+        return(
+            <div className="container container-fluid">
+                <Header headerName={"Submit an Organization"} />
+                <form onSubmit={this.handleSubmit}>
+                    {/* <!-- Organization Name --> */}
+                    <div className="form-group">
+                        <label 
+                            for="name">Organization Name</label>
+                        <input 
+                            name="name"
+                            value={this.state.name} 
+                            onChange={this.handleChange} 
+                            className="form-control" 
+                            aria-describedby="org name" 
+                            placeholder="Organization's Full Name" />
                     </div>
-                    <div className="form-check form-check-inline">
-                        <input className="form-check-input" type="checkbox" id="lunch" value="true"></input>
-                        <label className="form-check-label" for="lunchCheck">Lunch</label>
+                    
+                    {/* Address Line 1 */}
+                    <div className="form-group ">
+                        <label 
+                            for="address">Address</label>
+                        <input 
+                            name="address"
+                            value={this.state.address} 
+                            onChange={this.handleChange} 
+                            className="form-control"
+                            aria-describedby="org name" 
+                            placeholder="1234 Main St" />
                     </div>
-                    <div className="form-check form-check-inline">
-                        <input className="form-check-input" type="checkbox" id="dinner" value="true"></input>
-                        <label className="form-check-label" for="dinnerCheck">Dinner</label>
+                    
+                    {/* City, State, Zip */}
+                    <div className="form-row">
+                        <div className="form-group col-md-6">
+                            <label 
+                                for="city">City</label>
+                            <input 
+                                name="city"
+                                value={this.state.city} 
+                                onChange={this.handleChange}
+                                className="form-control" />
+                        </div>
+                        <div className="form-group col-md-2">
+                            <label 
+                                for="state">State</label>
+                            <select 
+                                name="state"
+                                value={this.state.state} 
+                                onChange={this.handleChange}
+                                id="state" 
+                                className="form-control">
+                                <option selected>WA</option>
+                            </select>
+                        </div>
+                        <div className="form-group col-md-4">
+                            <label 
+                                for="zip">Zip</label>
+                            <input 
+                                name="zip"
+                                value={this.state.zip} 
+                                onChange={this.handleChange} 
+                                className="form-control" />
+                        </div>
                     </div>
-                </div>
+                    
+                    {/* Phone Number and Website */}
+                    <div className="form-row d-flex justify-content-between" >
+                        {/* Phone Number */}
+                        <div className="form-group col-md-4">
+                            <label 
+                                for="phone_number">Phone Number</label>
+                            <input
+                                name="phone_number"
+                                value={this.state.phone_number} 
+                                onChange={this.handleChange} 
+                                className="form-control"
+                                aria-describedby="phone number"
+                                placeholder="123.456.7890" />
+                        </div>
+                        {/* <!-- Website --> */}
+                        <div className="form-group col-md-4">
+                            <label 
+                                for="website">Website</label>
+                            <input 
+                                name="website"
+                                value={this.state.website} 
+                                onChange={this.handleChange} 
+                                className="form-control"
+                                aria-describedby="website"
+                                placeholder="Website.org" />
+                        </div>
+                    </div>
+                    
+                    {/* Serving Population Details */}
+                    <div className="form-row d-flex justify-content-between">
+                        {/* Gender Group Restrictions */}
+                        <div className="form-group col-md-6">
+                            <label 
+                                for="genderRestriction">Please specify gender/group restrictions, if any</label>
+                            <div className="d-flex justify-content-between genderRestriction">
+                                <div className="form-check form-check-inline">
+                                    <input 
+                                        name="family_youth"
+                                        type="checkbox" 
+                                        value={this.state.family_youth} 
+                                        onChange={this.handleChange} 
+                                        className="form-check-input" />
+                                        <label 
+                                            className="form-check-label" 
+                                            for="family_youth">Family/Youth</label>
+                                </div>
+                                <div className="form-check form-check-inline">
+                                    <input 
+                                        name="male"
+                                        type="checkbox" 
+                                        value={this.state.male} 
+                                        onChange={this.handleChange} 
+                                        className="form-check-input" />
+                                        <label 
+                                            className="form-check-label" 
+                                            for="male">Men Only</label>
+                                </div>
+                                <div className="form-check form-check-inline">
+                                    <input 
+                                        name="female"
+                                        type="checkbox" 
+                                        value={this.state.female} 
+                                        onChange={this.handleChange} 
+                                        className="form-check-input" />
+                                        <label 
+                                            className="form-check-label" 
+                                            for="female">Women Only</label>
+                                </div>
+                            </div>
+                        </div>
+                        {/* Age Min/Max */}
+                        <div className="form-group col-md-2">
+                            <label 
+                                for="age_min">Age Min.</label>
+                            <input 
+                            name="age_min"
+                            type="number"
+                            value={this.state.age_min}
+                            className="form-control mb-2" 
+                            placeholder="18" />
+                        </div>
+                        <div className="form-group col-md-2">
+                            <label 
+                                for="age_min">Age Max.</label>
+                            <input 
+                            name="age_max"
+                            type="number"
+                            value={this.state.age_max}
+                            className="form-control mb-2" 
+                            placeholder="18" />
+                        </div>
+                    </div>
+                    
+                    {/* Health Services */}
+                    <div className="form-group">
+                        <label 
+                            for="health">Health & Personal Care</label>
+                        <div className="d-flex justify-content-around health">
+                                <div className="form-check form-check-inline">
+                                    <input 
+                                        name="urgent_care"
+                                        type="checkbox" 
+                                        value={this.state.urgent_care} 
+                                        onChange={this.handleChange} 
+                                        className="form-check-input" />
+                                        <label 
+                                            className="form-check-label" 
+                                            for="urgent_care">Urgent Care</label>
+                                </div>
+                                <div className="form-check form-check-inline">
+                                    <input 
+                                        name="dental"
+                                        type="checkbox" 
+                                        value={this.state.dental} 
+                                        onChange={this.handleChange} 
+                                        className="form-check-input" />
+                                        <label 
+                                            className="form-check-label" 
+                                            for="dental">Dental</label>
+                                </div>
+                                <div className="form-check form-check-inline">
+                                    <input 
+                                        name="mental"
+                                        type="checkbox" 
+                                        value={this.state.mental} 
+                                        onChange={this.handleChange} 
+                                        className="form-check-input" />
+                                        <label 
+                                            className="form-check-label" 
+                                            for="mental">Behavioral</label>
+                                </div>
+                                <div className="form-check form-check-inline">
+                                    <input 
+                                        name="dental_care"
+                                        type="checkbox" 
+                                        value={this.state.dental_care} 
+                                        onChange={this.handleChange} 
+                                        className="form-check-input" />
+                                        <label 
+                                            className="form-check-label" 
+                                            for="daily">Daily Care</label>
+                                </div>
+                            
+                        </div>
+                    </div>
+                    
+                    {/* Food */}
+                    <div class="form-group">
+                        <label 
+                            for="food">Food</label>
+                        <div className="d-flex justify-content-around">
+                            <div className="form-group food">
+                                <label
+                                    for="foodServiceType">Please specify how you provide food</label>
+                                <div className="food d-flex justify-content-between">
+                                    <div className="form-check form-check-inline">
+                                        <input 
+                                            name="served_meal"
+                                            type="checkbox" 
+                                            value={this.state.served_meal} 
+                                            onChange={this.handleChange} 
+                                            className="form-check-input" />
+                                            <label 
+                                                className="form-check-label" 
+                                                for="served_meal">Served Meals</label>
+                                    </div>
+                                    <div className="form-check form-check-inline">
+                                        <input 
+                                            name="food_bank"
+                                            type="checkbox" 
+                                            value={this.state.food_bank} 
+                                            onChange={this.handleChange} 
+                                            className="form-check-input" />
+                                            <label 
+                                                className="form-check-label" 
+                                                for="food_bank">Food Bank</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="form-group meals">
+                                <label 
+                                    for="mealCheck">Meals served</label>
+                                <div className="meals d-flex justify-content-between">
+                                    <div className="form-check form-check-inline">
+                                        <input 
+                                            name="breakfast"
+                                            type="checkbox" 
+                                            value={this.state.breakfast} 
+                                            onChange={this.handleChange} 
+                                            className="form-check-input" />
+                                            <label 
+                                                className="form-check-label" 
+                                                for="breakfast">Breakfast</label>
+                                    </div>
+                                    <div className="form-check form-check-inline">
+                                        <input 
+                                            name="lunch"
+                                            type="checkbox" 
+                                            value={this.state.lunch} 
+                                            onChange={this.handleChange} 
+                                            className="form-check-input" />
+                                            <label 
+                                                className="form-check-label" 
+                                                for="lunch">Lunch</label>
+                                    </div>
+                                    <div className="form-check form-check-inline">
+                                        <input 
+                                            name="dinner"
+                                            type="checkbox" 
+                                            value={this.state.dinner} 
+                                            onChange={this.handleChange} 
+                                            className="form-check-input" />
+                                            <label 
+                                                className="form-check-label" 
+                                                for="dinner">Dinner</label>
+                                    </div>
+                                </div>                       
+                            </div>
+                        </div>
+                    </div>
+                    
+                    {/* Shelter */}
+                    <div className="form-group">
+                        <label 
+                            for="shelter">Shelter</label>
+                        <div className="d-flex justify-content-around shelter">
+                            <div className="form-check form-check-inline">
+                                <input 
+                                    name="immediate_shelter"
+                                    type="checkbox" 
+                                    value={this.state.immediate_shelter} 
+                                    onChange={this.handleChange} 
+                                    className="form-check-input" />
+                                    <label 
+                                        className="form-check-label" 
+                                        for="immediate_shelter">Immediate Shelter</label>
+                            </div>
+                            <div className="form-check form-check-inline">
+                                <input 
+                                    name="longterm_shelter"
+                                    type="checkbox" 
+                                    value={this.state.longterm_shelter} 
+                                    onChange={this.handleChange} 
+                                    className="form-check-input" />
+                                    <label 
+                                        className="form-check-label" 
+                                        for="longterm_shelter">Long-Term Shelter</label>
+                            </div>
+                        </div>
+                    </div>
 
+                    {/* Description */}
+                    <div class="form-group">
+                        <label 
+                            for="description">Details</label>
+                        <textarea 
+                            name="description"
+                            value={this.state.description} 
+                            onChange={this.handleChange} 
+                            class="form-control"
+                            rows="3"
+                            placeholder="Please include days and hours of operation and other important details for those in need of your services."
+                            />
+                    </div>
+                    
+                    <button type="submit" className="btn btn-primary">Submit</button>
+                </form>
             </div>
-            {/* <!-- Questions for Shelter --> */}
-            <div className="form-group service" id="shelter">
-                <select className="form-control col-md-6" id="shelterServiceType">
-                    <option value="default">Choose...</option>
-                    <option value="immediateShelter">Immediate Shelter</option>
-                    <option value="longerTermShelter">Longer-term Housing</option>
-                </select>
-                <label className="shelterType" for="shelterType">Please specify any restrictions, if any.</label>
-                <select className="form-control" id="shelterType">
-                    <option selected>Choose...</option>
-                    <option value="menShelter">Men only</option>
-                    <option value="womenShelter">Women only</option>
-                    <option value="familyShelter">Family</option>
-                </select>
-            </div>
-
-            <div>
-                <button type="submit" className="btn btn-primary">Submit</button>
-            </div>
-        </div>
-    </div>
-    </form>
- 
-</div>
-
-    )
+            
+                )
+            
+    }
 };
-
-
-export default Submit;

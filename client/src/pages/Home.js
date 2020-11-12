@@ -6,6 +6,7 @@ import TypeContext from '../utils/TypeContext';
 
 
 export default function Home() {
+    // const headerName = "Welcome Idiont"
     const [alert, setAlert] = useState({
         display: false,
         type: "all",
@@ -17,7 +18,7 @@ export default function Home() {
             <TypeContext.Provider value={"all"}>
 
                 <div className="container container-fluid">
-                    <Header />
+                    <Header headerName={"What Do You Need?"}/>
                     <Content />
                 </div>
                 

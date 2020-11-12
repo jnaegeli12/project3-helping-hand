@@ -4,7 +4,7 @@ import Header from '../components/Header';
 function Profile() {
     return(
         <div className="container container-fluid">
-            <Header />
+            <Header headerName={ "Create a Profile" }/>
         </div>
     )
 }
