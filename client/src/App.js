@@ -9,7 +9,7 @@ import Results from './pages/Results';
 export default function App() {
 
   return (
-    <Router>
+    <Router basename={process.env.PUBLIC_URL}>
       <div>
         <Nav />
         <Switch>
