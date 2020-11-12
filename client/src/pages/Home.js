@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Header from '../components/Header';
-import ShelterCard from '../components/ShelterCard'
 import Content from '../components/Content';
 import ButtonContext from '../utils/ButtonContext';
 import TypeContext from '../utils/TypeContext';

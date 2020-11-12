@@ -22,7 +22,8 @@ const [org, setOrganization] = useState([])
             <h3>{orgs.name}</h3>
             <h5>{orgs.address}, {orgs.city}, {orgs.state} {orgs.zip}</h5>
             <h3>Phone: {orgs.phone_number}</h3>
-            <a className="text-white" href={orgs.website}>{orgs.website}</a>
+            <p>{orgs.description}</p>
+            <a className="text-white" href={orgs.website}>Learn more at: {orgs.website}</a>
           </div>
         </div>
       ))}

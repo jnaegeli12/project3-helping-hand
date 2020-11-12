@@ -9,6 +9,10 @@ const API =  {
   getFood: function() {
     return axios.get("/api/food");
   },
+  // Gets food orgs with user specs
+  getFoodRange: function() {
+    return axios.get("/api/food/range");
+  },
   // Gets all shelter organizations
   getShelter: function() {
     return axios.get("/api/shelter");
