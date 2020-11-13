@@ -5,15 +5,30 @@ import DcBtn from '../components/DcBtn';
 import HBtn from '../components/HBtn';
 import SBtn from '../components/SBtn'
 import ResultCard from '../components/ResultsCard'
+import API from '../utils/API'
 
 
 export default function Home() {
+
+    const [ shelter, setShelter] = useState([])
+
+function LoadShelter() {
+    useEffect(() => {
+        API.getShelter()
+        .then(res => {
+          console.log("res form api call: ", res);
+          setShelter(res.data)
+        })
+        .catch((err) => console.log(err));
+      }, []); 
+ }
+   
+
     return(
         
          <Container>
             <div className="row col-9">
-                <FBtn>
-                    <ResultCard />                                                                    
+                <FBtn onClick={() => <ResultCard /> }>
                 </FBtn>
                 <DcBtn>
                     <ResultCard /> 
@@ -26,7 +41,6 @@ export default function Home() {
                 <SBtn>
                     <ResultCard /> 
                 </SBtn>
-                <ResultCard />
             </div> 
                
         </Container>

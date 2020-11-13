@@ -4,7 +4,7 @@ import ResultsCard from '../ResultsCard';
 import API from '../../utils/API';
 
 // Destructuring the type, classNameName, children and onClick props, applying them to the button element
-const SBtn = () => {
+const SBtn = (props) => {
 
   // const [ shelter, setShelter] = useState([])
 
@@ -19,7 +19,7 @@ const SBtn = () => {
 
   return (
     <div>
-    <button className="btn btn-icon" id="shelter"><img className="main-services" src="/assets/shelter-icon.png"
+    <button className="btn btn-icon" id="shelter" {...props}><img className="main-services" src="/assets/shelter-icon.png"
     alt="Shelter Logo" width="300px"></img></button>
     </div>
   );
