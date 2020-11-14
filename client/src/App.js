@@ -5,6 +5,8 @@ import Home from "./pages/Home";
 import Submit from "./pages/Submit";
 import Profile from "./pages/Profile";
 import Results from './pages/Results';
+import Register from "./pages/Register";
+
 
 export default function App() {
 
@@ -17,6 +19,7 @@ export default function App() {
           <Route exact path="/submit" component={Submit} />
           <Route exact path="/profile" component={Profile} />
           <Route exact path="/results" component={Results} />
+          <Route exact path="/register" component={Register} />
         </Switch>
       </div>
     </Router>

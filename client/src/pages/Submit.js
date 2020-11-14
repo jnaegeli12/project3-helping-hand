@@ -177,7 +177,7 @@ export default class Submit extends React.Component {
                             </div>
                             {/* Age Min/Max */}
                             <div className="d-flex justify-content-start">
-                                <div className="form-group col-3">
+                                <div className="form-group col-4">
                                     <label 
                                         for="age_min">Age Min.</label>
                                     <input 
@@ -187,7 +187,7 @@ export default class Submit extends React.Component {
                                         className="form-control col-5" 
                                         placeholder="18" />
                                 </div>
-                                <div className="form-group col-3">
+                                <div className="form-group col-4">
                                     <label 
                                         for="age_min">Age Max.</label>
                                     <input 

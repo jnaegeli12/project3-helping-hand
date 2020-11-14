@@ -1,5 +1,4 @@
 import React from "react";
-// import Submit from '../../pages/Submit'
 
 // Destructuring the type, classNameName, children and onClick props, applying them to the button element
 const Nav = () => {
@@ -13,7 +12,7 @@ const Nav = () => {
           <form className="form-inline">
               <a href="/profile">
                 <button className="btn btn-danger" type="button">
-                  Create a Profile
+                  Profile
                 </button>
               </a>
               <a href="/submit">
