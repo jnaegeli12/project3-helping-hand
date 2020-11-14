@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Header from '../components/Header';
 import Axios from 'axios';
 
-function Profile() {
+export default function Register() {
     const [registerUsername, setRegisterUsername] = useState('');
     const [registerPassword, setRegisterPassword] = useState('');
     const [data, setData] = useState(null);
@@ -30,30 +30,47 @@ function Profile() {
         console.log(res.data);
       });
     };
+    
     return (
-      <div className='container container-fluid'>
-        <div>
+        <div className='container container-fluid'>
         <Header headerName={ "Create a Profile" }/>
-        <form onSubmit={register}>
-          <input
-            placeholder='username'
-            onChange={(e) => setRegisterUsername(e.target.value)}
-          />
-          <input
-            placeholder='password'
-            onChange={(e) => setRegisterPassword(e.target.value)}
-          />
-          <button type="submit className="btn btn-primary>Submit</button>
-          </form>
+        <div className="container container-fluid col-6 d-flex justify-content-center">
+            <form onSubmit={register}>
+                <div className="form-group">    
+                    <label
+                        for="name">Username</label>
+                    <input
+                        name="newUser"
+                        className="form-control"
+                        placeholder='Username'
+                        onChange={(e) => setRegisterUsername(e.target.value)}/>
+                </div>
+                <div className="form-group">    
+                    <label     
+                        for="name">Password</label>
+                    <input
+                        name="newPassword"
+                        className="form-control"
+                        placeholder='Password'
+                        onChange={(e) => setRegisterPassword(e.target.value)}/>
+                </div>
+                <div className="form-group">    
+                    <label
+                        for="name">Verify Password</label>
+                    <input
+                        name="newPassword"
+                        className="form-control"
+                        placeholder='Password'
+                        onChange={(e) => setRegisterPassword(e.target.value)}/>
+                </div>
+                <div className="form-group d-flex justify-content-around mb-3">    
+                    Already have an account?<a href="/profile"> Login here</a>
+                </div>
+                <div className="d-flex justify-content-center">
+                    <button type="submit" className="btn btn-primary">Sign Up</button>
+                </div>
+            </form>
         </div>
-  
-
-        <div>
-        <Header headerName={ "Welcome Back!" }/>
-          <button onClick={getUser}>Submit</button>
-          {data ? <h1>Welcome Back {data.username}</h1> : null}
-        </div>
-      </div>
+    </div>
     );
   }
-export default Profile;
