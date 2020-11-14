@@ -35,32 +35,31 @@ export default function Profile() {
             <Header headerName={ "Login" }/>
             <div className="container container-fluid col-6 d-flex justify-content-center">
                 <form onSubmit={login}>
-                    <div className="form-group d-flex justify-content-around">    
-                        <label
-                            className="col-3"
+                    <div className="form-group">    
+                        <label  
                             for="name">Username</label>
                         <input
-                            className="col-5"
+                            name="newPassword"
+                            className="form-control"
                             placeholder='Username'
                             onChange={(e) => setLoginUsername(e.target.value)}/>
                     </div>
-                    <div className="form-group d-flex justify-content-around">    
+                    <div className="form-group">    
                         <label
-                            className="col-3"
                             for="name">Password</label>
                         <input
-                            className="col-5"
+                            name="newPassword"
+                            className="form-control"
                             placeholder='Password'
                             onChange={(e) => setLoginPassword(e.target.value)}/>
                     </div>
                     <div className="form-group d-flex justify-content-around mb-3">    
-                        Don't have an account? <a href="/register">Sign up here</a>
+                        Don't have an account?<a href="/register"> Sign up here</a>
                     </div>
                     <div className="d-flex justify-content-center">
-                        <button type="button" onClick={login} className="btn btn-primary">Login</button>
+                        <button type="submit" className="btn btn-primary">Login</button>
                     </div>
                 </form>
-       
             </div>
         </div>
 
