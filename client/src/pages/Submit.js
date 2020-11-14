@@ -161,7 +161,7 @@ export default class Submit extends React.Component {
                                             className="form-check-input" />
                                             <label 
                                                 className="form-check-label" 
-                                                for="male">Men Only</label>
+                                                for="male">Men</label>
                                     </div>
                                     <div className="form-check form-check-inline col-3">
                                         <input 
@@ -172,7 +172,7 @@ export default class Submit extends React.Component {
                                             className="form-check-input" />
                                             <label 
                                                 className="form-check-label" 
-                                                for="female">Women Only</label>
+                                                for="female">Women</label>
                                     </div>
                             </div>
                             {/* Age Min/Max */}
