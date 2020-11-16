@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import API from '../../utils/API';
+import shelterIcon from './assets/shelter-icon.png';
+import foodIcon from './assets/food-icon.png';
 
 function ResultsCard() {
 const [org, setOrganization] = useState([]);
@@ -14,11 +16,11 @@ const [org, setOrganization] = useState([]);
 
   function showType(orgs) {
     switch (orgs) {
-      case orgs.food_bank: return "food";
+      case orgs.food_bank: return <img src={foodIcon} alt="food"></img>;
       case orgs.immediate_shelter || orgs.longterm_shelter === 1: return <img src="../../public/assets/shelter-icon.png" alt="shelter"></img>;
       case orgs.urgent_care || orgs.mental || orgs.dental === 1: return <img src="../../public/assets/health-icon.png"alt="health"></img>;
       case orgs.daily === 1: return <img src="../../public/assets/daily-icon.png"alt="daily care"></img>;
-      default: return <img src={'./assets/health-icon.png'} alt="shelter"></img>;
+      default: return <img src={shelterIcon} alt="shelter"></img>;
     }
   }
 
