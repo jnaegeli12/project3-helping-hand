@@ -10,16 +10,6 @@ const orm = require("./db/orm");
 // Define middleware here
 router.use(express.urlencoded({ extended: true }));
 router.use(express.json());
-// Serve up static assets (usually on heroku)
-if (process.env.NODE_ENV === 'production') {
-  // Serve any static files
-  app.use(express.static(path.join(__dirname, 'client/build')));
-
-  // Handle React routing, return all requests to React app
-  app.get('*', function(req, res) {
-    res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
-  });
-}
 
 // API routes
 app.get("/api/all", (req, res) => {
@@ -112,6 +102,17 @@ app.post("/api/organizations", (req, res) => {
     res.json(result);
 })
 });
+
+// Serve up static assets (usually on heroku)
+if (process.env.NODE_ENV === 'production') {
+  // Serve any static files
+  app.use(express.static(path.join(__dirname, 'client/build')));
+
+  // Handle React routing, return all requests to React app
+  app.get('*', function(req, res) {
+    res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
+  });
+}
 
 // Start the API server
 app.listen(PORT, function() {
