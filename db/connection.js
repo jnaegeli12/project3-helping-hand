@@ -1,5 +1,5 @@
 var mysql = require("mysql");
-var util = require("util");
+// var util = require("util");
 var connection;
 
 if (process.env.JAWSDB_URL) {
@@ -23,6 +23,6 @@ connection.connect(function(err) {
 
 // Setting up connection.query to use promises instead of callbacks
 // This allows us to use the async/await syntax
-connection.query = util.promisify(connection.query);
+// connection.query = util.promisify(connection.query);
 
 module.exports = connection;

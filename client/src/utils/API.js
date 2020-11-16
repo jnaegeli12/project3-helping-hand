@@ -26,8 +26,8 @@ const API =  {
     return axios.get("/api/daily");
   },
   // Posts a new org
-  addOrg: function() {
-      return axios.post("api/all");
+  addOrg: function(postData) {
+    return axios.post("api/organizations", postData);
   }
 };
 

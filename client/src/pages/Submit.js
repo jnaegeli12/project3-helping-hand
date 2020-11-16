@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Header from '../components/Header';
+import API from '../utils/API';
 
 export default class Submit extends React.Component {
     state = {
@@ -8,7 +9,7 @@ export default class Submit extends React.Component {
         city: "",
         state: "WA",
         zip: null,
-        phone_number: null,
+        phone_number: "",
         website: "",
         served_meal: false,
         food_bank: false,
@@ -28,7 +29,6 @@ export default class Submit extends React.Component {
     
     handleChange = event => {
         const isCheckBox = event.target.type === 'checkbox';
-        console.log(event.target.value);
         this.setState({ 
             [event.target.name]: isCheckBox 
             ? event.target.checked 
@@ -38,7 +38,35 @@ export default class Submit extends React.Component {
 
     handleSubmit = (event)  => {
         event.preventDefault();
-        console.log(this.state)
+        let newOrg = {
+            name: this.state.name,
+            address: this.state.address,
+            city: this.state.city,
+            state: this.state.state,
+            zip: this.state.zip,
+            phone_number: this.state.phone_number,
+            website: this.state.website,
+            served_meal: this.state.served_meal,
+            food_bank: this.state.food_bank,
+            immediate_shelter: this.state.immediate_shelter,
+            longterm_shelter: this.state.longterm_shelter,
+            urgent_care: this.state.urgent_care,
+            dental: this.state.dental,
+            mental: this.state.mental,
+            daily: this.state.daily,
+            description: this.state.description,
+            age_min: this.state.age_min,
+            age_max: this.state.age_max,
+            male: this.state.male,
+            female: this.state.female,
+            family_youth: this.state.family_youth
+        }
+        console.log(newOrg);
+        API.addOrg(newOrg)
+            .then(function (response) {
+                console.log(response);
+            })
+            .catch((err) => console.log(err));
     }
 
     render() {
@@ -50,7 +78,7 @@ export default class Submit extends React.Component {
                         {/* <!-- Organization Name --> */}
                         <div className="form-group">
                             <label 
-                                for="name">Organization Name</label>
+                                htmlFor="name">Organization Name</label>
                             <input 
                                 name="name"
                                 value={this.state.name} 
@@ -63,7 +91,7 @@ export default class Submit extends React.Component {
                         {/* Address Line 1 */}
                         <div className="form-group ">
                             <label 
-                                for="address">Address</label>
+                                htmlFor="address">Address</label>
                             <input 
                                 name="address"
                                 value={this.state.address} 
@@ -77,7 +105,7 @@ export default class Submit extends React.Component {
                         <div className="form-row">
                             <div className="form-group col-md-7">
                                 <label 
-                                    for="city">City</label>
+                                    htmlFor="city">City</label>
                                 <input 
                                     name="city"
                                     value={this.state.city} 
@@ -86,21 +114,22 @@ export default class Submit extends React.Component {
                             </div>
                             <div className="form-group col-md-2">
                                 <label 
-                                    for="state">State</label>
+                                    htmlFor="state">State</label>
                                 <select 
                                     name="state"
                                     value={this.state.state} 
                                     onChange={this.handleChange}
                                     id="state" 
                                     className="form-control">
-                                    <option selected>WA</option>
+                                    <option value="WA">WA</option>
                                 </select>
                             </div>
                             <div className="form-group col-md-3">
                                 <label 
-                                    for="zip">Zip</label>
+                                    htmlFor="zip">Zip</label>
                                 <input 
                                     name="zip"
+                                    type="number"
                                     value={this.state.zip} 
                                     onChange={this.handleChange} 
                                     className="form-control" />
@@ -112,7 +141,7 @@ export default class Submit extends React.Component {
                             {/* Phone Number */}
                             <div className="form-group col-md-4">
                                 <label 
-                                    for="phone_number">Phone Number</label>
+                                    htmlFor="phone_number">Phone Number</label>
                                 <input
                                     name="phone_number"
                                     value={this.state.phone_number} 
@@ -124,7 +153,7 @@ export default class Submit extends React.Component {
                             {/* <!-- Website --> */}
                             <div className="form-group col-md-4">
                                 <label 
-                                    for="website">Website</label>
+                                    htmlFor="website">Website</label>
                                 <input 
                                     name="website"
                                     value={this.state.website} 
@@ -138,8 +167,8 @@ export default class Submit extends React.Component {
                         {/* Serving Population Details */}
                         <div className="form-group population mb-4">
                             <label 
-                                for="population">Populations Served</label>
-                            {/* Gender Group Restrictions */}
+                                htmlFor="population">Populations Served</label>
+                            {/* Gender Groups */}
                             <div className="d-flex justify-content-start mb-2">
                                     <div className="form-check form-check-inline col-3">
                                         <input 
@@ -150,7 +179,7 @@ export default class Submit extends React.Component {
                                             className="form-check-input" />
                                             <label 
                                                 className="form-check-label" 
-                                                for="family_youth">Family/Youth</label>
+                                                htmlFor="family_youth">Family/Youth</label>
                                     </div>
                                     <div className="form-check form-check-inline col-3">
                                         <input 
@@ -161,7 +190,7 @@ export default class Submit extends React.Component {
                                             className="form-check-input" />
                                             <label 
                                                 className="form-check-label" 
-                                                for="male">Men</label>
+                                                htmlFor="male">Men</label>
                                     </div>
                                     <div className="form-check form-check-inline col-3">
                                         <input 
@@ -172,28 +201,30 @@ export default class Submit extends React.Component {
                                             className="form-check-input" />
                                             <label 
                                                 className="form-check-label" 
-                                                for="female">Women</label>
+                                                htmlFor="female">Women</label>
                                     </div>
                             </div>
                             {/* Age Min/Max */}
                             <div className="d-flex justify-content-start">
                                 <div className="form-group col-4">
                                     <label 
-                                        for="age_min">Age Min.</label>
+                                        htmlFor="age_min">Minumum Age</label>
                                     <input 
                                         name="age_min"
                                         type="number"
                                         value={this.state.age_min}
+                                        onChange={this.handleChange}
                                         className="form-control col-5" 
                                         placeholder="18" />
                                 </div>
                                 <div className="form-group col-4">
                                     <label 
-                                        for="age_min">Age Max.</label>
+                                        htmlFor="age_min">Maximum Age</label>
                                     <input 
                                         name="age_max"
                                         type="number"
                                         value={this.state.age_max}
+                                        onChange={this.handleChange}
                                         className="form-control col-5" 
                                         placeholder="18" />
                                 </div>
@@ -203,7 +234,7 @@ export default class Submit extends React.Component {
                         {/* Health Services */}
                         <div className="form-group health mb-4">
                             <label 
-                                for="health">Health &amp; Personal Care</label>
+                                htmlFor="health">Health &amp; Personal Care</label>
                             <div className="d-flex justify-content-start">
                                 <div className="form-check form-check-inline col-3">
                                     <input 
@@ -214,7 +245,7 @@ export default class Submit extends React.Component {
                                         className="form-check-input" />
                                         <label 
                                             className="form-check-label" 
-                                            for="urgent_care">Urgent Care</label>
+                                            htmlFor="urgent_care">Urgent Care</label>
                                 </div>
                                 <div className="form-check form-check-inline col-3">
                                     <input 
@@ -225,7 +256,7 @@ export default class Submit extends React.Component {
                                         className="form-check-input" />
                                         <label 
                                             className="form-check-label" 
-                                            for="dental">Dental</label>
+                                            htmlFor="dental">Dental</label>
                                 </div>
                                 <div className="form-check form-check-inline col-3">
                                     <input 
@@ -236,7 +267,7 @@ export default class Submit extends React.Component {
                                         className="form-check-input" />
                                         <label 
                                             className="form-check-label" 
-                                            for="mental">Behavioral</label>
+                                            htmlFor="mental">Behavioral</label>
                                 </div>
                                 <div className="form-check form-check-inline col-3">
                                     <input 
@@ -247,7 +278,7 @@ export default class Submit extends React.Component {
                                         className="form-check-input" />
                                         <label 
                                             className="form-check-label" 
-                                            for="daily">Daily Care</label>
+                                            htmlFor="daily">Daily Care</label>
                                 </div>
                             </div>
                         </div>
@@ -255,7 +286,7 @@ export default class Submit extends React.Component {
                         {/* Food */}
                         <div className="form-group food mb-4">
                             <label
-                                for="food">Food</label>
+                                htmlFor="food">Food</label>
                             <div className="d-flex justify-content-start">
                                 <div className="form-check form-check-inline col-3">
                                     <input 
@@ -266,7 +297,7 @@ export default class Submit extends React.Component {
                                         className="form-check-input" />
                                         <label 
                                             className="form-check-label" 
-                                            for="served_meal">Served Meals</label>
+                                            htmlFor="served_meal">Served Meals</label>
                                 </div>
                                 <div className="form-check form-check-inline col-3">
                                     <input 
@@ -277,7 +308,7 @@ export default class Submit extends React.Component {
                                         className="form-check-input" />
                                         <label 
                                             className="form-check-label" 
-                                            for="food_bank">Food Bank</label>
+                                            htmlFor="food_bank">Food Bank</label>
                                 </div>
                             </div>
                         </div>
@@ -285,7 +316,7 @@ export default class Submit extends React.Component {
                         {/* Shelter */}
                         <div className="form-group shelter mb-4">
                             <label 
-                                for="shelter">Shelter</label>
+                                htmlFor="shelter">Shelter</label>
                             <div className="d-flex justify-content-start">
                                 <div className="form-check form-check-inline col-3">
                                     <input 
@@ -296,7 +327,7 @@ export default class Submit extends React.Component {
                                         className="form-check-input" />
                                         <label 
                                             className="form-check-label" 
-                                            for="immediate_shelter">Immediate</label>
+                                            htmlFor="immediate_shelter">Immediate</label>
                                 </div>
                                 <div className="form-check form-check-inline col-3">
                                     <input 
@@ -307,20 +338,20 @@ export default class Submit extends React.Component {
                                         className="form-check-input" />
                                         <label 
                                             className="form-check-label" 
-                                            for="longterm_shelter">Long-Term</label>
+                                            htmlFor="longterm_shelter">Long-Term</label>
                                 </div>
                             </div>
                         </div>
 
                         {/* Description */}
-                        <div class="form-group">
+                        <div className="form-group">
                             <label 
-                                for="description">Details</label>
+                                htmlFor="description">Details</label>
                             <textarea 
                                 name="description"
                                 value={this.state.description} 
                                 onChange={this.handleChange} 
-                                class="form-control"
+                                className="form-control"
                                 rows="5"
                                 placeholder="Please include days and hours of operation and other important details for those in need of your services."
                                 />
