@@ -49,10 +49,6 @@ app.get("/api/daily", (req, res) => {
 });
 
 app.post("/api/organizations", (req, res) => {
-  console.log(req);
-  console.log("Body: " + req.body);
-  console.log("Query: " + req.query);
-  console.log("Params: " + req.params)
   hand.createOrg([
     "name",
     "address",

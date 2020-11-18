@@ -5,10 +5,10 @@ import FoodCard from "./FoodCard";
 import ShelterCard from "./ShelterCard";
 import HealthCard from "./HealthCard";
 import DailyCard from "./DailyCard";
-import ResultsCard from "./ResultsCard";
+import ResultsCard from "./Results";
 
 function Content() {
-    const { onClick, type, display} = useContext(ButtonContext);
+    const { onClick, type, display } = useContext(ButtonContext);
 
     function chooseResults() {
       switch (type) {
@@ -21,7 +21,7 @@ function Content() {
     }
 
     return (
-        <div className="text-center">
+        <div>
             <div className="row">
                 <button onClick={() => onClick("food", true)} className="btn btn-icon" id="food">
                 <img className="main-services" src="/assets/food-icon.png" alt="Food Icon" width="300px"></img>
@@ -41,12 +41,12 @@ function Content() {
             <div className="row">
                 <a href="/results"><h3 className="text-center link">Click here to see all the organizations.</h3></a>
             </div>
-            <div className="row">
+            <div>
             <Alert style={{ opacity: display ? 1 : 0 }} type={type}>
               {chooseResults({type})}
             </Alert>
             </div>
-          </div>
+        </div>
   
     );
   }

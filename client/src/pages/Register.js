@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Header from '../components/Header';
-import Axios from 'axios';
+import axios from 'axios';
 
 export default function Register() {
     const [registerUsername, setRegisterUsername] = useState('');
@@ -8,7 +8,7 @@ export default function Register() {
     const [data, setData] = useState(null);
     
     const register = () => {
-      Axios({
+      axios({
         method: 'POST',
         data: {
           username: registerUsername,
@@ -21,7 +21,7 @@ export default function Register() {
     
     
     const getUser = () => {
-      Axios({
+      axios({
         method: 'GET',
         withCredentials: true,
         url: 'http://localhost:3000/user',

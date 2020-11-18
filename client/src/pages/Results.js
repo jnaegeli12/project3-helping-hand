@@ -1,5 +1,5 @@
 import React from "react";
-import ResultsCard from "../components/ResultsCard";
+import ResultsCard from "../components/Results";
 
 function Results() {
     return (
