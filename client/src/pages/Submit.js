@@ -63,7 +63,7 @@ export default class Submit extends React.Component {
         }
         console.log(newOrg);
         API.createOrg(newOrg)
-            .then(function (response) {
+            .then((response) => {
                 console.log(response);
             })
             .catch((err) => console.log(err));

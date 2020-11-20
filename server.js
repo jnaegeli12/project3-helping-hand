@@ -56,7 +56,7 @@ app.post("/api/organizations", (req, res) => {
    col.push(column)
    val.push(req.body[column])
  }
- orm.create(col, val, (cb) => {
+ orm.createOrg(col, val, (cb) => {
    console.log(cb)
    res.status(201).json({});
  })

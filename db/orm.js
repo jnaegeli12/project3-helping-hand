@@ -46,12 +46,12 @@ const orm = {
             cb(result);
         });
     },
-    createOrg: function(col, val, cb) {
-        let queryString = 'INSERT INTO organizations';
+    create: function(table, col, val, cb) {
+        let queryString = 'INSERT INTO ' + table;
         queryString += ' (' + col.toString() + ') ';
         queryString += 'VALUES (' + printQuestionMarks(val.length) + ')';
         console.log(queryString);
-        connection.query(queryString, val, function(err, result) {
+        connection.query(queryString, col, val, function(err, result) {
             if (err) throw err;
             cb(result);
         });
