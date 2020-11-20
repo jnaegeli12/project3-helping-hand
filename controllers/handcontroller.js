@@ -43,39 +43,41 @@ router.get('/api/daily_care', function(req, res) {
     });
 });
 
-router.post('api/organization', function(req, res) {
-    help.create([
-        'name',
-        'address',
-        'city',
-        'state',
-        'zip',
-        'phone',
-        'website',
-        'food',
-        'health_care',
-        'daily_care',
-        'shelter',
-        'condition'
-    ],
-    [
-        req.body.name,
-        req.body.address,
-        req.body.city,
-        req.body.state,
-        req.body.zip,
-        req.body.phone,
-        req.body.website,
-        req.body.food,
-        req.body.health_care,
-        req.body.daily_care,
-        req.body.shelter,
-        false
-    ], function(results) {
-     //giving an id to each company who choses to added ther company information
-        res.json({id: results.insertId})
-    }); 
-});
+app.post("/api/organizations", (req, res) => {
+    let col = []
+    let val = []
+  
+   for(const column in req.body){
+     col.push(column)
+     val.push(req.body[column])
+   }
+   orm.createOrg(col, val, (cb) => {
+     console.log(cb)
+     res.status(201).json({});
+   })
+   
+  
+  });
+  app.post("/api/users", (req, res) => {
+    let col = []
+    let val = []
+    
+  
+   for(const column in req.body){
+     col.push(column)
+     val.push(req.body[column])
+   }
+  
+   console.log(col)
+   console.log(val)
+   orm.createUser(col, val, function (cb) {
+     console.log(cb)
+     res.status(201).json({});
+   })
+   
+  
+  });
+  
 
 router.get("/", function(req, res) {
     res.render('index');

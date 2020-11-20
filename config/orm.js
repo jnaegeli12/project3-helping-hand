@@ -57,8 +57,8 @@ const orm = {
         })
     },
     
-    create: function (table, col, val, cb) {
-        let queryString = 'INSERT INTO ' + table;
+    create: function ( col, val, cb) {
+        let queryString = 'INSERT INTO organizations';
         
         queryString += ' (' + col.toString() + ') ';
         queryString += 'VALUES (' + printQuestionMarks(val.length) + ')';
