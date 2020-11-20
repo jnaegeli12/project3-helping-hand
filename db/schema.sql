@@ -10,8 +10,8 @@ CREATE TABLE organizations (
     city VARCHAR(30) NOT NULL,
     state VARCHAR(2) NOT NULL,
     zip INT(5) NOT NULL,
-    phone_number INTEGER(11) NULL,
-    website VARCHAR(30) NULL,
+    phone_number VARCHAR(12) NULL,
+    website VARCHAR(100) NULL,
     served_meal BOOLEAN DEFAULT false,
     food_bank BOOLEAN DEFAULT false,
     immediate_shelter BOOLEAN DEFAULT false,
@@ -24,7 +24,7 @@ CREATE TABLE organizations (
     age_min INT(2) NULL,
     age_max INT(2) NULL,
     male BOOLEAN DEFAULT false,
-    female BOOLEAN DEAFULT false,
+    female BOOLEAN DEFAULT false,
     family_youth BOOLEAN DEFAULT false,
     PRIMARY KEY(id)
 );

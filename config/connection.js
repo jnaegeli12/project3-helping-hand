@@ -15,7 +15,7 @@ connection.connect(function(err) {
   if (err) {
     console.error("error connecting: " + err.stack);
     return;
-  }
+  } 
   console.log("Connected to the database!");
 });
 // Setting up connection.query to use promises instead of callbacks
