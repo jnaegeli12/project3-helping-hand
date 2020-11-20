@@ -26,7 +26,7 @@ const API =  {
     return axios.get("/api/daily");
   },
   // Posts a new org
-  addOrg: function(postData) {
+  createOrg: function(postData) {
     return axios.post("api/organizations", postData);
   }
 };

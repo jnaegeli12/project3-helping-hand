@@ -62,7 +62,7 @@ export default class Submit extends React.Component {
             family_youth: this.state.family_youth
         }
         console.log(newOrg);
-        API.addOrg(newOrg)
+        API.createOrg(newOrg)
             .then(function (response) {
                 console.log(response);
             })
