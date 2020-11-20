@@ -27,37 +27,43 @@ function printQuestionMarks(num) {
 // }
 
 const orm = {
-    selectAllFood: function (input, cb) {
-        let queryString = `SELECT id, name, address, city, state, zip, website, phone_number FROM organization WHERE food = 1`;
-        connection.query(queryString, function (err, res) {
-            if (err) throw err;
-            cb(res)
-        })
+    selectAll: function(cb) {
+        let queryString= "SELECT * FROM organizations;"
+        connection.query(queryString, function(err, result) {
+            if(err) throw err;
+            cb(result);
+        });
+    },
+    selectAllFood: function(cb) {
+        let queryString = "SELECT * FROM organizations WHERE food_bank = 1 or served_meal = 1;"
+        connection.query(queryString, function(err, result) {
+            if(err) throw err;
+            cb(result);
+        });
+    },
+    selectAllShelter: function(cb) {
+        let queryString = "SELECT * FROM organizations WHERE immediate_shelter = 1 or longterm_shelter = 1;"
+        connection.query(queryString, function(err, result) {
+            if(err) throw err;
+            cb(result);
+        });
+    },
+    selectAllHealth: function(cb) {
+        let queryString = "SELECT * FROM organizations WHERE urgent_care = 1 or dental = 1 or mental = 1;"
+        connection.query(queryString, function(err, result) {
+            if(err) throw err;
+            cb(result);
+        });
+    },
+    selectAllDaily: function(cb) {
+        let queryString = "SELECT * FROM organizations WHERE daily = 1;"
+        connection.query(queryString, function(err, result) {
+            if(err) throw err;
+            cb(result);
+        });
     },
     
-    selectAllShelter: function (input, cb) {
-        let queryString = `SELECT id, name, address, city, state, zip, website, phone_number FROM organization WHERE shelter = 1`;
-        connection.query(queryString, function (err, res) {
-            if (err) throw err;
-            cb(res)
-        })
-    },
-    selectAllHealth_care: function (input, cb) {
-        let queryString = `SELECT id, name, address, city, state, zip, website, phone_number FROM organization WHERE health_care = 1`;
-        connection.query(queryString, function (err, res) {
-            if (err) throw err;
-            cb(res)
-        })
-    },
-    selectAllDaily_care: function (input, cb) {
-        let queryString = `SELECT id, name, address, city, state, zip, website, phone_number FROM organization WHERE daily_care = 1`;
-        connection.query(queryString, function (err, res) {
-            if (err) throw err;
-            cb(res)
-        })
-    },
-    
-    create: function ( col, val, cb) {
+    createOrg: function ( col, val, cb) {
         let queryString = 'INSERT INTO organizations';
         
         queryString += ' (' + col.toString() + ') ';

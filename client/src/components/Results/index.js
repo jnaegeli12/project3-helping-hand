@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from "react";
 import API from '../../utils/API';
 
-function ResultsCard(props) {
+function ResultsCard() {
 const [org, setOrganization] = useState([]);
-console.log(props.type);
 
   useEffect(() => {
     API.getAll()
