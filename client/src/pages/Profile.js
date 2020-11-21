@@ -3,21 +3,28 @@ import Header from '../components/Header';
 import Axios from 'axios';
 
 export default function Profile() {
-    const [loginUsername, setLoginUsername] = useState('');
-    const [loginPassword, setLoginPassword] = useState('');
+    const [username, setUsername] = useState('');
+    const [password, setPassword] = useState('');
+
+    const [loginStatus, setLoginStatus] = useState(false);
+
+      Axios.defaults.withCredentials = true;
     // const [data, setData] = useState(null);
     
+
+
     const login = () => {
-      Axios({
-        method: 'POST',
-        data: {
-          username: loginUsername,
-          password: loginPassword,
-        },
-        withCredentials: true,
-        url: 'http://localhost:3000/login',
-      }).then((res) => console.log(res));
-    };
+        Axios.post('http://localhost:3301/login', {
+          username: username,
+          password: password,
+        }).then((response) => {
+          if (response.data.message) {
+          setLoginStatus();
+          } else {
+           setLoginStatus(response.data[0].username)
+          }
+        }); 
+      };
 
     // const getUser = () => {
     //   Axios({
@@ -39,27 +46,28 @@ export default function Profile() {
                         <label  
                             for="name">Username</label>
                         <input
-                            name="newPassword"
+                            name="username"
                             className="form-control"
                             placeholder='Username'
-                            onChange={(e) => setLoginUsername(e.target.value)}/>
+                            onChange={(e) => setUsername(e.target.value)}/>
                     </div>
                     <div className="form-group">    
                         <label
                             for="name">Password</label>
                         <input
-                            name="newPassword"
+                            name="password"
                             className="form-control"
                             placeholder='Password'
-                            onChange={(e) => setLoginPassword(e.target.value)}/>
+                            onChange={(e) => setPassword(e.target.value)}/>
                     </div>
                     <div className="form-group d-flex justify-content-around mb-3">    
                         Don't have an account?<a href="/register"> Sign up here</a>
                     </div>
                     <div className="d-flex justify-content-center">
-                        <button type="submit" className="btn btn-primary">Login</button>
+                    <button type="submit" className="btn btn-primary">Login</button>
                     </div>
                 </form>
+                  <h1> Welcome {loginStatus}</h1>
             </div>
         </div>
     );

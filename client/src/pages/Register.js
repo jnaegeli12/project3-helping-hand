@@ -1,35 +1,32 @@
 import React, { useState } from 'react';
 import Header from '../components/Header';
-import axios from 'axios';
+import Axios from 'axios';
 
 export default function Register() {
     const [registerUsername, setRegisterUsername] = useState('');
     const [registerPassword, setRegisterPassword] = useState('');
-    const [data, setData] = useState(null);
     
+  
     const register = () => {
-      axios({
-        method: 'POST',
-        data: {
-          username: registerUsername,
-          password: registerPassword,
-        },
-        withCredentials: true,
-        url: 'http://localhost:3000/register',
-      }).then((res) => console.log(res));
-    };
+      Axios.post('http://localhost:3301/register', {
+        username: registerUsername,
+        password: registerPassword,
+      }).then((response) => {
+        console.log(response);
+      })
+    }; 
     
     
-    const getUser = () => {
-      axios({
-        method: 'GET',
-        withCredentials: true,
-        url: 'http://localhost:3000/user',
-      }).then((res) => {
-        setData(res.data);
-        console.log(res.data);
-      });
-    };
+   // const getUser = () => {
+   //   axios({
+   //     method: 'GET',
+   //     withCredentials: true,
+   //     url: 'http://localhost:3000/user',
+   //   }).then((res) => {
+   //     setData(res.data);
+   //     console.log(res.data);
+   //   });
+   // };
     
     return (
         <div className='container container-fluid'>
@@ -40,7 +37,7 @@ export default function Register() {
                     <label
                         for="name">Username</label>
                     <input
-                        name="newUser"
+                        name="username"
                         className="form-control"
                         placeholder='Username'
                         onChange={(e) => setRegisterUsername(e.target.value)}/>
@@ -49,12 +46,12 @@ export default function Register() {
                     <label     
                         for="name">Password</label>
                     <input
-                        name="newPassword"
+                        type="password"
                         className="form-control"
                         placeholder='Password'
                         onChange={(e) => setRegisterPassword(e.target.value)}/>
                 </div>
-                <div className="form-group">    
+               {/* <div className="form-group">    
                     <label
                         for="name">Verify Password</label>
                     <input
@@ -63,11 +60,12 @@ export default function Register() {
                         placeholder='Password'
                         onChange={(e) => setRegisterPassword(e.target.value)}/>
                 </div>
+              */} 
                 <div className="form-group d-flex justify-content-around mb-3">    
                     Already have an account?<a href="/profile"> Login here</a>
                 </div>
                 <div className="d-flex justify-content-center">
-                    <button type="submit" className="btn btn-primary">Sign Up</button>
+                    <button onClick={register} className="btn btn-primary">Sign Up</button>
                 </div>
             </form>
         </div>
