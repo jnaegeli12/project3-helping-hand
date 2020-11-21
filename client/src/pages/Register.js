@@ -1,74 +1,70 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Header from '../components/Header';
-import Axios from 'axios';
+import API from '../utils/API';
 
-export default function Register() {
-    const [registerUsername, setRegisterUsername] = useState('');
-    const [registerPassword, setRegisterPassword] = useState('');
+export default class Register extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            username: '',
+            password: ''
+        };
+    }
     
-  
-    const register = () => {
-      Axios.post('http://localhost:3301/register', {
-        username: registerUsername,
-        password: registerPassword,
-      }).then((response) => {
-        console.log(response);
-      })
-    }; 
+    handleChange = event => {
+        this.setState({value: event.target.value})
+    }
+
+    handleSubmit = (event) => {
+        event.preventDefault();
+        let newUser = {
+            username: this.state.username,
+            password: this.state.password
+        }
+        console.log(newUser);
+        
+        API.createUser(newUser)
+        .then((response) => {
+            console.log(response);
+        }).catch((err) => console.log(err));
+    }
     
-    
-   // const getUser = () => {
-   //   axios({
-   //     method: 'GET',
-   //     withCredentials: true,
-   //     url: 'http://localhost:3000/user',
-   //   }).then((res) => {
-   //     setData(res.data);
-   //     console.log(res.data);
-   //   });
-   // };
-    
+    render() {
     return (
         <div className='container container-fluid'>
         <Header headerName={ "Create a Profile" }/>
         <div className="container container-fluid col-6 d-flex justify-content-center">
-            <form onSubmit={register}>
+            <form onSubmit={this.handleSubmit}>
                 <div className="form-group">    
                     <label
-                        for="name">Username</label>
+                        htmlFor="name">Username</label>
                     <input
                         name="username"
+                        value={this.state.username}
                         className="form-control"
                         placeholder='Username'
-                        onChange={(e) => setRegisterUsername(e.target.value)}/>
+                        onChange={this.handleChange}/>
                 </div>
                 <div className="form-group">    
                     <label     
-                        for="name">Password</label>
+                        htmlFor="name">Password</label>
                     <input
+                        name="password"
+                        value={this.state.password}
                         type="password"
                         className="form-control"
                         placeholder='Password'
-                        onChange={(e) => setRegisterPassword(e.target.value)}/>
+                        onChange={this.handleChange}/>
                 </div>
-               {/* <div className="form-group">    
-                    <label
-                        for="name">Verify Password</label>
-                    <input
-                        name="newPassword"
-                        className="form-control"
-                        placeholder='Password'
-                        onChange={(e) => setRegisterPassword(e.target.value)}/>
-                </div>
-              */} 
                 <div className="form-group d-flex justify-content-around mb-3">    
                     Already have an account?<a href="/profile"> Login here</a>
                 </div>
                 <div className="d-flex justify-content-center">
-                    <button onClick={register} className="btn btn-primary">Sign Up</button>
+                    <button type="submit" className="btn btn-primary">Sign Up</button>
                 </div>
             </form>
         </div>
     </div>
     );
-  }
+}
+}

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Header from '../components/Header';
-import Axios from 'axios';
+import API from '../utils/API'
 
 export default function Profile() {
     const [username, setUsername] = useState('');
@@ -8,16 +8,17 @@ export default function Profile() {
 
     const [loginStatus, setLoginStatus] = useState(false);
 
-      Axios.defaults.withCredentials = true;
+      // Axios.defaults.withCredentials = true;
     // const [data, setData] = useState(null);
     
-
-
     const login = () => {
-        Axios.post('http://localhost:3301/login', {
+        let newLogin = {
           username: username,
-          password: password,
-        }).then((response) => {
+          password: password
+        }
+
+        API.getProfile(newLogin)
+        .then((response) => {
           if (response.data.message) {
           setLoginStatus();
           } else {
@@ -25,17 +26,6 @@ export default function Profile() {
           }
         }); 
       };
-
-    // const getUser = () => {
-    //   Axios({
-    //     method: 'GET',
-    //     withCredentials: true,
-    //     url: 'http://localhost:3000/user',
-    //   }).then((res) => {
-    //     setData(res.data);
-    //     console.log(res.data);
-    //   });
-    // };
 
     return (
         <div className='container container-fluid'>
@@ -56,6 +46,7 @@ export default function Profile() {
                             for="name">Password</label>
                         <input
                             name="password"
+                            type="password"
                             className="form-control"
                             placeholder='Password'
                             onChange={(e) => setPassword(e.target.value)}/>
