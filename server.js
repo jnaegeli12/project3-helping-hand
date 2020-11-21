@@ -8,7 +8,7 @@ const bcrypt = require('bcrypt');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const cors = require('cors');
-const db = require('./config/connection');
+const connection = require('./config/connection');
 const orm = require("./config/orm");
 
 // Define middleware here
@@ -23,12 +23,7 @@ app.use(cors({
 }));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(
-  cors({
-    origin: 'http://localhost:3301',
-    credentials: true,
-  })
-)
+
 app.use(cookieParser());
 
 app.use(
@@ -52,12 +47,6 @@ app.get("/api/all", (req, res) => {
 
 app.get("/api/food", (req, res) => {
   orm.selectAllFood(function(result) {
-    res.json(result);
-  })
-});
-
-app.get("/api/food/range", (req, res) => {
-  orm.selectFoodRange(function(result) {
     res.json(result);
   })
 });
@@ -88,28 +77,16 @@ app.post("/api/organizations", (req, res) => {
    col.push(column)
    val.push(req.body[column])
  }
- orm.create(col, val, (cb) => {
+ orm.createOrg(col, val, (cb) => {
    console.log(cb)
    res.status(201).json({});
  })
  
 
 });
-//app.post("/api/users", (req, res) => {
- // let col = []
-//  let val = []
-  
-
- //for(const column in req.body){
- //  col.push(column)
- //  val.push(req.body[column])
-// }
-
- //console.log(col)
- //console.log(val)
 
 //routes for user auth
-app.post("/register", (req, res) => {
+app.post("api/users", (req, res) => {
   const username = req.body.username;
   const password = req.body.password;
 
@@ -118,7 +95,7 @@ app.post("/register", (req, res) => {
       console.log(err);
     }
 
-    db.query(
+    connection.query(
       "INSERT INTO users (username, password) VALUES (?,?)",
       [username, hash],
       (err, result) => {
@@ -127,19 +104,11 @@ app.post("/register", (req, res) => {
     );
   });
 });
-  app.get('/login', (req, res) => {
-    if (req.session.user) {
-      res.send({ loggedIn: true, user: req.session.user })
-    } else {
-      res.send({ loggedIn: false });
-    }
-  })
-  
  
-  app.post('/login', (req, res) => {
+  app.get('api/users', (req, res) => {
     const username = req.body.username;
     const password = req.body.password;
-    db.query(
+    connection.query(
       'SELECT * FROM users where username = ?',
       username,
       (err, result) => {
@@ -162,11 +131,6 @@ app.post("/register", (req, res) => {
       }  
     );
   });
-//  orm.createUser(col, val, function (cb) {
-//    console.log(cb)
-//    res.status(201).json({});
-//  })
- //});
 
 // Serve up static assets (usually on heroku)
 if (process.env.NODE_ENV === 'production') {
