@@ -1,42 +1,15 @@
-const session = require('express-session');
 const express = require("express");
 const router = express.Router();
 const path = require("path");
 const app = express();
 const PORT = process.env.PORT || 3301;
 const bcrypt = require('bcrypt');
-const bodyParser = require('body-parser');
-const cookieParser = require('cookie-parser');
-const cors = require('cors');
 const connection = require('./config/connection');
 const orm = require("./config/orm");
 
 // Define middleware here
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-//middleware for user auth.
-app.use(express.json());
-app.use(cors({
-  origin:['http://localhost:3301'],
-  methods:['GET', 'POST'],
-  credentials: true
-}));
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
-
-app.use(cookieParser());
-
-app.use(
-  session({
-    key: 'userID',
-    secret: 'supersecretcode',
-    resave: false,
-    saveUninitialized: false,
-    cookie: {
-    expires: 60 * 60 * 24
-    },
-  })
-);
 
 // API routes
 app.get("/api/all", (req, res) => {

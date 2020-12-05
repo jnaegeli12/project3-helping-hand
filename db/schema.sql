@@ -33,5 +33,7 @@ CREATE TABLE users (
     id INT NOT NULL AUTO_INCREMENT,
     username VARCHAR(20) NOT NULL,
     password VARCHAR(20) NOT NULL,
-    PRIMARY KEY(id)
+    favorite_id INT,
+    PRIMARY KEY (id),
+    FOREIGN KEY (favorite_id) REFERENCES organizations(id)
 )

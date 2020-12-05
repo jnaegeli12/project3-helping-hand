@@ -58,7 +58,6 @@ export default function Profile() {
                     <button type="submit" className="btn btn-primary">Login</button>
                     </div>
                 </form>
-                  <h1> Welcome {loginStatus}</h1>
             </div>
         </div>
     );

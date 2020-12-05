@@ -11,6 +11,13 @@ function printQuestionMarks(num) {
 }
 
 const orm = {
+    selectOrgs: function(cb) {
+        let queryString= "SELECT * FROM organizations;"
+        connection.query(queryString, function(err, result) {
+            if(err) throw err;
+            cb(result);
+        });
+    },
     selectAll: function(cb) {
         let queryString= "SELECT * FROM organizations;"
         connection.query(queryString, function(err, result) {
