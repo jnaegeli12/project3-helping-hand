@@ -52,7 +52,7 @@ app.post("/api/organizations", (req, res) => {
   let col = []
   let val = []
 
- for(const column in req.body){
+ for (const column in req.body){
    col.push(column)
    val.push(req.body[column])
  }
@@ -60,9 +60,8 @@ app.post("/api/organizations", (req, res) => {
    console.log(cb)
    res.status(201).json({});
  })
- 
-
 });
+
 app.post("/api/users", (req, res) => {
   let col = []
   let val = []
