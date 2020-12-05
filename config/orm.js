@@ -28,7 +28,7 @@ function printQuestionMarks(num) {
 
 const orm = {
     selectAll: function(cb) {
-        let queryString= "SELECT * FROM organizations;"
+        let queryString= "SELECT * FROM organizations ORDER BY name;"
         connection.query(queryString, function(err, result) {
             if(err) throw err;
             cb(result);
