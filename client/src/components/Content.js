@@ -21,7 +21,7 @@ function Content() {
     }
 
     return (
-        <div>
+        <div id="type-buttons">
             <div className="row">
                 <button onClick={() => onClick("food", true)} className="btn btn-icon" id="food">
                 <img className="main-services" src="/assets/food-icon.png" alt="Food Icon" width="300px"></img>
