@@ -37,22 +37,47 @@ const [shelter, setShelter] = useState([]);
     }
   }
 
+  function showType(orgs) {
+    let types = [];
+
+    if (orgs.served_meal === 1) {types.push("Served Meal")};
+    if (orgs.food_bank === 1) {types.push("Food Bank")};
+    if (orgs.immediate_shelter === 1) {types.push("Immediate Shelter")};
+    if (orgs.longterm_shelter === 1) {types.push("Longer-term Shelter")};
+    if (orgs.urgent_care === 1) {types.push("Urgent Care")};
+    if (orgs.mental === 1) {types.push("Mental Health")};
+    if (orgs.dental === 1) {types.push("Dental Care")};
+    if (orgs.daily === 1) {types.push("Daily Services")};
+
+    return types.join(', ');
+  }
+
+  function showPopulation(orgs) {
+    let pop = [];
+
+    if (orgs.male === 1) {pop.push("Men")}
+    if (orgs.female === 1) {pop.push("Women")}
+    if (orgs.family_youth === 1) {pop.push("Families/Youth")}
+
+    return pop.join(', ');
+  }
+
   return (
 <div>
 {shelter.map(shelters => (
-  <div className="card text-white bg-dark mb-3" >
-    <div className="card-body" key={shelters.phone_number}>
-    <div className="d-flex w-100 justify-content-between">
+  <div className="card text-white bg-dark mb-3" key={shelters.id}>
+    <div className="card-body">
+      <div className="d-flex w-100 justify-content-between">
         <h3>{shelters.name}</h3>
         <span id="icons">{showFood(shelters)} {showShelter(shelters)} {showHealth(shelters)} {showDaily(shelters)}</span>
-      </div> 
-      <h5>{shelters.address}, {shelters.city} {shelters.state}</h5>
-      <h3>Phone: {shelters.phone_number}</h3>
-      <p>{shelters.description}</p>
-      <div className="d-flex w-100 justify-content-between">
-        <a className="text-white" href={shelters.website}>Learn more at: {shelters.website}</a>
-        <button className="btn btn btn-light">Add to Favorites</button>
       </div>
+      <h5><i>Address:</i> {shelters.address}, {shelters.city}, {shelters.state} {shelters.zip}<br />
+      <i>Phone:</i> {shelters.phone_number}</h5>
+      <p>{shelters.description}</p>
+      <p><b>Service Type:</b> {showType(shelters)}<br />
+        <b>Served Population:</b> {showPopulation(shelters)}<br />
+        <b>Age Restrictions:</b> {shelters.age_min}&ndash;{shelters.age_max}</p>
+      <a className="text-white" href={shelters.website}>Learn more at: {shelters.website}</a>
     </div>
   </div>
 ))}

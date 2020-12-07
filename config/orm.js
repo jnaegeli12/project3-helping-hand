@@ -55,28 +55,6 @@ const orm = {
             if (err) throw err;
             cb(result);
         });
-    },
-    createUser: function(col, val, cb) {
-        let queryString = 'INSERT INTO users';
-        queryString += ' (' + col.toString() + ') ';
-        queryString += 'VALUES (' + printQuestionMarks(val.length) + ')';
-        console.log(queryString);
-        connection.query(queryString, val, function (err, res) {
-            if (err) throw err;
-            cb(res);
-        });
-    },
-    getProfile: function(col, val, cb) {
-        console.log(col);
-        console.log(val);
-        let queryString = 'SELECT * FROM users WHERE username="jnaegeli12" and password="IN33dF00d";';
-        // queryString += ' (' + col.toString() + ') ';
-        // queryString += 'WHERE'
-        console.log(queryString);
-        connection.query(queryString, function(err, result) {
-            if(err) throw err;
-            cb(result);
-        });
     }
 };
 

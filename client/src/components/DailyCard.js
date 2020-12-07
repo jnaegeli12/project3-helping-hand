@@ -37,26 +37,51 @@ const [daily, setDaily] = useState([]);
     }
   }
 
+  function showType(orgs) {
+    let types = [];
+
+    if (orgs.served_meal === 1) {types.push("Served Meal")};
+    if (orgs.food_bank === 1) {types.push("Food Bank")};
+    if (orgs.immediate_shelter === 1) {types.push("Immediate Shelter")};
+    if (orgs.longterm_shelter === 1) {types.push("Longer-term Shelter")};
+    if (orgs.urgent_care === 1) {types.push("Urgent Care")};
+    if (orgs.mental === 1) {types.push("Mental Health")};
+    if (orgs.dental === 1) {types.push("Dental Care")};
+    if (orgs.daily === 1) {types.push("Daily Services")};
+
+    return types.join(', ');
+  }
+
+  function showPopulation(orgs) {
+    let pop = [];
+
+    if (orgs.male === 1) {pop.push("Men")}
+    if (orgs.female === 1) {pop.push("Women")}
+    if (orgs.family_youth === 1) {pop.push("Families/Youth")}
+
+    return pop.join(', ');
+  }
+
   return (
-<div>
-{daily.map(dailyOrgs => (
-  <div className="card text-white bg-dark mb-3" >
-    <div className="card-body" key={dailyOrgs.phone_number}>
-    <div className="d-flex w-100 justify-content-between">
-        <h3>{dailyOrgs.name}</h3>
-        <span id="icons">{showFood(dailyOrgs)} {showShelter(dailyOrgs)} {showHealth(dailyOrgs)} {showDaily(dailyOrgs)}</span>
-    </div>  
-      <h5>{dailyOrgs.address}, {dailyOrgs.city} {dailyOrgs.state}</h5>
-      <h3>Phone: {dailyOrgs.phone_number}</h3>
-      <p>{dailyOrgs.description}</p>
-      <div className="d-flex w-100 justify-content-between">
-        <a className="text-white" href={dailyOrgs.website}>Learn more at: {dailyOrgs.website}</a>
-        <button className="btn btn btn-light">Add to Favorites</button>
-      </div>
+    <div>
+      {daily.map(dailyOrgs => (
+        <div className="card text-white bg-dark mb-3" key={dailyOrgs.id}>
+          <div className="card-body">
+            <div className="d-flex w-100 justify-content-between">
+              <h3>{dailyOrgs.name}</h3>
+              <span id="icons">{showFood(dailyOrgs)} {showShelter(dailyOrgs)} {showHealth(dailyOrgs)} {showDaily(dailyOrgs)}</span>
+            </div>
+            <h5><i>Address:</i> {dailyOrgs.address}, {dailyOrgs.city}, {dailyOrgs.state} {dailyOrgs.zip}<br />
+            <i>Phone:</i> {dailyOrgs.phone_number}</h5>
+            <p>{dailyOrgs.description}</p>
+            <p><b>Service Type:</b> {showType(dailyOrgs)}<br />
+              <b>Served Population:</b> {showPopulation(dailyOrgs)}<br />
+              <b>Age Restrictions:</b> {dailyOrgs.age_min}&ndash;{dailyOrgs.age_max}</p>
+            <a className="text-white" href={dailyOrgs.website}>Learn more at: {dailyOrgs.website}</a>
+          </div>
+        </div>
+      ))}
     </div>
-  </div>
-))}
-</div>
   );
 }
 export default DailyCard;

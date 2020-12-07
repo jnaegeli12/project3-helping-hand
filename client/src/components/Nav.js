@@ -10,9 +10,9 @@ const Nav = () => {
                 Helping Hand
              </a>
           <form className="form-inline">
-              <a href="/profile">
+              <a href="/results">
                 <button className="btn btn-danger" type="button">
-                  Profile
+                  All Organizations
                 </button>
               </a>
               <a href="/submit">

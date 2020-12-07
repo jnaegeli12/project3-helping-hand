@@ -37,26 +37,51 @@ const [health, setHealth] = useState([]);
     }
   }
 
+  function showType(orgs) {
+    let types = [];
+
+    if (orgs.served_meal === 1) {types.push("Served Meal")};
+    if (orgs.food_bank === 1) {types.push("Food Bank")};
+    if (orgs.immediate_shelter === 1) {types.push("Immediate Shelter")};
+    if (orgs.longterm_shelter === 1) {types.push("Longer-term Shelter")};
+    if (orgs.urgent_care === 1) {types.push("Urgent Care")};
+    if (orgs.mental === 1) {types.push("Mental Health")};
+    if (orgs.dental === 1) {types.push("Dental Care")};
+    if (orgs.daily === 1) {types.push("Daily Services")};
+
+    return types.join(', ');
+  }
+
+  function showPopulation(orgs) {
+    let pop = [];
+
+    if (orgs.male === 1) {pop.push("Men")}
+    if (orgs.female === 1) {pop.push("Women")}
+    if (orgs.family_youth === 1) {pop.push("Families/Youth")}
+
+    return pop.join(', ');
+  }
+
   return (
-<div>
-{health.map(healthOrgs => (
-  <div className="card text-white bg-dark mb-3" >
-    <div className="card-body" key={healthOrgs.phone_number}>
-    <div className="d-flex w-100 justify-content-between">
-        <h3>{healthOrgs.name}</h3>
-        <span id="icons">{showFood(healthOrgs)} {showShelter(healthOrgs)} {showHealth(healthOrgs)} {showDaily(healthOrgs)}</span>
-    </div>   
-     <h5>{healthOrgs.address}, {healthOrgs.city} {healthOrgs.state}</h5>
-     <h3>Phone: {healthOrgs.phone_number}</h3>
-     <p>{healthOrgs.description}</p>
-      <div className="d-flex w-100 justify-content-between">
-        <a className="text-white" href={healthOrgs.website}>Learn more at: {healthOrgs.website}</a>
-        <button className="btn btn btn-light">Add to Favorites</button>
-      </div>
+    <div>
+      {health.map(healthOrgs => (
+        <div className="card text-white bg-dark mb-3" key={healthOrgs.id}>
+          <div className="card-body">
+            <div className="d-flex w-100 justify-content-between">
+              <h3>{healthOrgs.name}</h3>
+              <span id="icons">{showFood(healthOrgs)} {showShelter(healthOrgs)} {showHealth(healthOrgs)} {showDaily(healthOrgs)}</span>
+            </div>
+            <h5><i>Address:</i> {healthOrgs.address}, {healthOrgs.city}, {healthOrgs.state} {healthOrgs.zip}<br />
+            <i>Phone:</i> {healthOrgs.phone_number}</h5>
+            <p>{healthOrgs.description}</p>
+            <p><b>Service Type:</b> {showType(healthOrgs)}<br />
+              <b>Served Population:</b> {showPopulation(healthOrgs)}<br />
+              <b>Age Restrictions:</b> {healthOrgs.age_min}&ndash;{healthOrgs.age_max}</p>
+            <a className="text-white" href={healthOrgs.website}>Learn more at: {healthOrgs.website}</a>
+          </div>
+        </div>
+      ))}
     </div>
-  </div>
-))}
-</div>
   );
 }
 export default HealthCard;

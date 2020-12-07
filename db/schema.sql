@@ -10,7 +10,7 @@ CREATE TABLE organizations (
     city VARCHAR(30) NOT NULL,
     state VARCHAR(2) NOT NULL,
     zip INT(5) NOT NULL,
-    phone_number VARCHAR(12) NULL,
+    phone_number VARCHAR(15) NULL,
     website VARCHAR(100) NULL,
     served_meal BOOLEAN DEFAULT false,
     food_bank BOOLEAN DEFAULT false,
@@ -20,22 +20,11 @@ CREATE TABLE organizations (
     dental BOOLEAN DEFAULT false,
     mental BOOLEAN DEFAULT false,
     daily BOOLEAN DEFAULT false,
-    description VARCHAR(300) NOT NULL,
-    age_min INT(2) NULL,
-    age_max INT(2) NULL,
+    description VARCHAR(1000) NOT NULL,
+    age_min INT(2) DEFAULT 0,
+    age_max INT(3) DEFAULT 100,
     male BOOLEAN DEFAULT false,
     female BOOLEAN DEFAULT false,
     family_youth BOOLEAN DEFAULT false,
     PRIMARY KEY(id)
 );
-
-CREATE TABLE users (
-    id INT NOT NULL AUTO_INCREMENT,
-    username VARCHAR(20) NOT NULL,
-    password VARCHAR(20) NOT NULL,
-    name VARCHAR(50),
-    age INT(2) NOT NULL,
-    male BOOLEAN,
-    female BOOLEAN,
-    PRIMARY KEY(id)
-)

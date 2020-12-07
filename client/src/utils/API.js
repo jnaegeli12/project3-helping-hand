@@ -24,13 +24,6 @@ const API =  {
   // Posts a new org
   createOrg: function(postData) {
     return axios.post("api/organizations", postData);
-  },
-  getUser: function(getData) {
-    console.log(getData);
-    return axios.get("api/users/", getData);
-  },
-  createUser: function(postData) {
-    return axios.post("api/users", postData);
   }
 };
 

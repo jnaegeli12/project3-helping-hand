@@ -37,24 +37,49 @@ function FoodCard() {
     }
   }
 
+  function showType(orgs) {
+    let types = [];
+
+    if (orgs.served_meal === 1) {types.push("Served Meal")};
+    if (orgs.food_bank === 1) {types.push("Food Bank")};
+    if (orgs.immediate_shelter === 1) {types.push("Immediate Shelter")};
+    if (orgs.longterm_shelter === 1) {types.push("Longer-term Shelter")};
+    if (orgs.urgent_care === 1) {types.push("Urgent Care")};
+    if (orgs.mental === 1) {types.push("Mental Health")};
+    if (orgs.dental === 1) {types.push("Dental Care")};
+    if (orgs.daily === 1) {types.push("Daily Services")};
+
+    return types.join(', ');
+  }
+
+  function showPopulation(orgs) {
+    let pop = [];
+
+    if (orgs.male === 1) {pop.push("Men")}
+    if (orgs.female === 1) {pop.push("Women")}
+    if (orgs.family_youth === 1) {pop.push("Families/Youth")}
+
+    return pop.join(', ');
+  }
+
   return (
 <div>
 {food.map(foods => (
   <div className="card text-white bg-dark mb-3" key={foods.id}>
-    <div className="card-body">
-      <div className="d-flex w-100 justify-content-between">
-        <h3>{foods.name}</h3>
-        <span id="icons">{showFood(foods)} {showShelter(foods)} {showHealth(foods)} {showDaily(foods)}</span>
-      </div>     
-     <h5>{foods.address}, {foods.city} {foods.state}</h5>
-     <h3>Phone: {foods.phone_number}</h3>
-     <p>{foods.description}</p>
-     <div className="d-flex w-100 justify-content-between">
-        <a className="text-white" href={foods.website}>Learn more at: {foods.website}</a>
-        <button className="btn btn btn-light">Add to Favorites</button>
-      </div>
+  <div className="card-body">
+    <div className="d-flex w-100 justify-content-between">
+      <h3>{foods.name}</h3>
+      <span id="icons">{showFood(foods)} {showShelter(foods)} {showHealth(foods)} {showDaily(foods)}</span>
     </div>
+    <h5><i>Address:</i> {foods.address}, {foods.city}, {foods.state} {foods.zip}<br />
+    <i>Phone:</i> {foods.phone_number}</h5>
+    <p>{foods.description}</p>
+    <p><b>Service Type:</b> {showType(foods)}<br />
+      <b>Served Population:</b> {showPopulation(foods)}<br />
+      <b>Age Restrictions:</b> {foods.age_min}&ndash;{foods.age_max}</p>
+    <a className="text-white" href={foods.website}>Learn more at: {foods.website}</a>
   </div>
+</div>
 ))}
 </div>
   );

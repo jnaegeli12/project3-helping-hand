@@ -21,6 +21,7 @@ function Content() {
     }
 
     return (
+      <div>  
         <div id="type-buttons">
             <div className="row">
                 <button onClick={() => onClick("food", true)} className="btn btn-icon" id="food">
@@ -38,16 +39,13 @@ function Content() {
                 <img className="main-services" src="/assets/daily-icon.png" alt="Dailycare Logo" width="300px" />
                 </button>
             </div>
-            <div className="row">
-                <a href="/results"><h3 className="text-center link">Click here to see all the organizations.</h3></a>
-            </div>
-            <div>
+        </div>
+        <div id="alert">
             <Alert style={{ opacity: display ? 1 : 0 }} type={type}>
               {chooseResults({type})}
             </Alert>
-            </div>
         </div>
-  
+      </div>
     );
   }
   
