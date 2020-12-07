@@ -272,7 +272,7 @@ export default class Submit extends React.Component {
                                 </div>
                                 <div className="form-check form-check-inline col-3">
                                     <input 
-                                        name="dental_care"
+                                        name="daily"
                                         type="checkbox" 
                                         value={this.state.daily} 
                                         onChange={this.handleChange} 
