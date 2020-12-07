@@ -64,7 +64,7 @@ export default function Register() {
                         onChange={(e) => setRegisterPassword(e.target.value)}/>
                 </div>
                 <div className="form-group d-flex justify-content-around mb-3">    
-                    Already have an account?<a href="/profile"> Login here</a>
+                    Already have an account?&nbsp;<a href="/profile">Login here</a>
                 </div>
                 <div className="d-flex justify-content-center">
                     <button type="submit" className="btn btn-primary">Sign Up</button>

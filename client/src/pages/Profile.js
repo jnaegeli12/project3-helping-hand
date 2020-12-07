@@ -1,52 +1,59 @@
+import axios from 'axios';
 import React, { useState } from 'react';
 import Header from '../components/Header';
-import Axios from 'axios';
+import API from '../utils/API';
 
-export default function Profile() {
+function Profile() {
     const [loginUsername, setLoginUsername] = useState('');
     const [loginPassword, setLoginPassword] = useState('');
-    // const [data, setData] = useState(null);
+    const [data, setData] = useState(null);
     
-    const login = () => {
-      Axios({
-        method: 'POST',
-        data: {
+    const login = (event) => {
+        event.preventDefault();
+        console.log(loginUsername);
+        console.log(loginPassword);
+        const userData = {
           username: loginUsername,
-          password: loginPassword,
-        },
-        withCredentials: true,
-        url: 'http://localhost:3000/login',
-      }).then((res) => console.log(res));
+          password: loginPassword
+        };
+    
+        if (!userData.username || !userData.password) {
+          return;
+        };
+
+        loginUser(userData.username, userData.password);
+
     };
 
-    // const getUser = () => {
-    //   Axios({
-    //     method: 'GET',
-    //     withCredentials: true,
-    //     url: 'http://localhost:3000/user',
-    //   }).then((res) => {
-    //     setData(res.data);
-    //     console.log(res.data);
-    //   });
-    // };
+    function loginUser() {
+        axios.post("/api/users").then((res) => {
+            console.log(res.data);
+            setData(res.data);
+        }).then(() => {
+            window.location.replace('/profile');
+        }).catch(err => {
+            // If there's an error, log the error
+            console.log(err);
+          });
+      }
 
     return (
         <div className='container container-fluid'>
-            <Header headerName={ "Login" }/>
+            <Header headerName={"Login to Your Profile"}/>
             <div className="container container-fluid col-6 d-flex justify-content-center">
                 <form onSubmit={login}>
                     <div className="form-group">    
                         <label  
-                            for="name">Username</label>
+                            htmlFor="name">Username</label>
                         <input
-                            name="newPassword"
+                            name="username"
                             className="form-control"
                             placeholder='Username'
                             onChange={(e) => setLoginUsername(e.target.value)}/>
                     </div>
                     <div className="form-group">    
                         <label
-                            for="name">Password</label>
+                            htmlFor="name">Password</label>
                         <input
                             name="newPassword"
                             className="form-control"
@@ -54,7 +61,7 @@ export default function Profile() {
                             onChange={(e) => setLoginPassword(e.target.value)}/>
                     </div>
                     <div className="form-group d-flex justify-content-around mb-3">    
-                        Don't have an account?<a href="/register"> Sign up here</a>
+                        Don't have an account?&nbsp;<a href="/register">Sign up here</a>
                     </div>
                     <div className="d-flex justify-content-center">
                         <button type="submit" className="btn btn-primary">Login</button>
@@ -63,4 +70,6 @@ export default function Profile() {
             </div>
         </div>
     );
-  };
+};
+    
+export default Profile;
